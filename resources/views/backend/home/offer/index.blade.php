@@ -37,18 +37,18 @@
                 <div class="card">
                   <div class="card-body">
 
-                  <div class="d-flex justify-content-between align-items-center mb-4">
-                    <nav aria-label="breadcrumb" role="navigation">
-                      <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item">
-                          <a href="{{ route('banner-home.index') }}">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">Home Details</li>
-                      </ol>
-                    </nav>
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb mb-0">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ route('we-offer.index') }}">Home</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">What We Offer Details</li>
+                            </ol>
+                        </nav>
 
-                    <a href="{{ route('banner-home.create') }}" class="btn btn-primary px-5 radius-30">+ Add Banner Details</a>
-							    </div>
+                        <a href="{{ route('we-offer.create') }}" class="btn btn-primary px-5 radius-30">+ Add Details</a>
+                    </div>
 
 
                     <div class="table-responsive custom-scrollbar">
@@ -56,39 +56,22 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Banner Video</th>
-                                <th>Banner Headings</th>
+                                <th>Heading</th>
+                                <th>Title</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($banners as $index => $banner)
+                           
+                            @foreach ($offers as $key => $offer)
                                 <tr>
-                                    <td>{{ $index + 1 }}</td>
-                                    
-                                    <!-- Banner Video Column -->
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $offer->heading }}</td>
+                                    <td>{{ $offer->title }}</td>
                                     <td>
-                                        @if($banner->video)
-                                            <video width="200" autoplay muted loop controls>
-                                                <source src="{{ asset('/uploads/banner/' . $banner->video) }}" type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        @else
-                                            <span class="text-muted">No video uploaded</span>
-                                        @endif
-                                    </td>
-
-                                    <!-- Banner Headings Column -->
-                                    <td>
-                                        @foreach(json_decode($banner->banner_headings, true) as $heading)
-                                            <div>- {{ $heading }}</div>
-                                        @endforeach
-                                    </td>
-
-                                    <!-- Actions -->
-                                    <td>
-                                        <a href="{{ route('banner-home.edit', $banner->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('banner-home.destroy', $banner->id) }}" method="POST" style="display:inline;">
+                                        <!-- Add your action buttons here -->
+                                        <a href="{{ route('we-offer.edit', $offer->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('we-offer.destroy', $offer->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
@@ -96,7 +79,6 @@
                                     </td>
                                 </tr>
                             @endforeach
-
                         </tbody>
                     </table>
 
