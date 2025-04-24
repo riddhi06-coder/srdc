@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 
 use App\Http\Controllers\Backend\BannerHomeController;
 use App\Http\Controllers\Backend\WeOfferController;
+use App\Http\Controllers\Backend\SolutionsController;
 
 
 
@@ -34,5 +35,8 @@ Route::group(['middleware' => ['auth:web', \App\Http\Middleware\PreventBackHisto
 // ==== Manage Banner Image on home page
 Route::resource('banner-home', BannerHomeController::class);
 
-// ==== Manage Home Page
+// ==== Manage What we offer
 Route::resource('we-offer', WeOfferController::class);
+
+// ==== Manage Solutions
+Route::resource('solutions', SolutionsController::class);
