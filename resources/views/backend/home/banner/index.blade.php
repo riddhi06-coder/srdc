@@ -69,7 +69,7 @@
                                     <!-- Banner Video Column -->
                                     <td>
                                         @if($banner->video)
-                                            <video width="200" controls>
+                                            <video width="200" autoplay muted loop controls>
                                                 <source src="{{ asset('/uploads/banner/' . $banner->video) }}" type="video/mp4">
                                                 Your browser does not support the video tag.
                                             </video>

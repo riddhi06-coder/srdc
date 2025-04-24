@@ -60,7 +60,7 @@
                                             <!-- Video Preview Container -->
                                             <div id="videoPreviewContainer" class="mt-2" style="display: none;">
                                                 <label class="form-label">Preview:</label>
-                                                <video id="videoPreview" controls width="100%" style="border: 1px solid #ccc; border-radius: 5px;"></video>
+                                                <video id="videoPreview" autoplay muted loop controls width="100%" style="border: 1px solid #ccc; border-radius: 5px;"></video>
                                             </div>
                                         </div>
                                                                             
@@ -76,15 +76,26 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <input type="text" name="banner_heading[]" class="form-control" placeholder="Enter Banner Heading">
-                                                        </td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary" id="addPrintRow">Add More</button>
-                                                        </td>
-                                                    </tr>
+                                                    @php
+                                                        $oldHeadings = old('banner_heading', ['']);
+                                                    @endphp
+
+                                                    @foreach ($oldHeadings as $index => $heading)
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" name="banner_heading[]" class="form-control" placeholder="Enter Banner Heading" value="{{ $heading }}">
+                                                            </td>
+                                                            <td>
+                                                                @if($loop->first)
+                                                                    <button type="button" class="btn btn-primary" id="addPrintRow">Add More</button>
+                                                                @else
+                                                                    <button type="button" class="btn btn-danger removePrintRow">Remove</button>
+                                                                @endif
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
                                                 </tbody>
+
                                             </table>
 
                                         </div>
