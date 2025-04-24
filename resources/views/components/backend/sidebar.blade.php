@@ -46,6 +46,7 @@
                     <li><a href="{{ route('banner-home.index') }}" class="{{ request()->routeIs('banner-home.index') ? 'active' : '' }}">Banner Details</a></li>
                     <li><a href="{{ route('we-offer.index') }}" class="{{ request()->routeIs('we-offer.index') ? 'active' : '' }}">What we offer</a></li>
                     <li><a href="{{ route('solutions.index') }}" class="{{ request()->routeIs('solutions.index') ? 'active' : '' }}">Solutions</a></li>
+                    <li><a href="{{ route('description.index') }}" class="{{ request()->routeIs('description.index') ? 'active' : '' }}">About Sara</a></li>
                   </ul>
                 </li>
 

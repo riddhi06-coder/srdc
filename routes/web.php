@@ -6,7 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Backend\BannerHomeController;
 use App\Http\Controllers\Backend\WeOfferController;
 use App\Http\Controllers\Backend\SolutionsController;
-
+use App\Http\Controllers\Backend\DescriptionController;
 
 
 // Authentication Routes
@@ -40,3 +40,6 @@ Route::resource('we-offer', WeOfferController::class);
 
 // ==== Manage Solutions
 Route::resource('solutions', SolutionsController::class);
+
+// ==== Manage Description
+Route::resource('description', DescriptionController::class);
