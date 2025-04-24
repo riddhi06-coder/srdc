@@ -19,9 +19,10 @@ class SolutionsController extends Controller
 
     public function index()
     {
-        return view('backend.home.solutions.index');
+        $solutions = Solutions::wherenull('deleted_by')->get();
+        return view('backend.home.solutions.index', compact('solutions'));
     }
-
+    
     public function create(Request $request)
     { 
         return view('backend.home.solutions.create');
@@ -89,6 +90,97 @@ class SolutionsController extends Controller
 
         return redirect()->route('solutions.index')->with('message', 'Solution added successfully.');
     }
+
+    public function edit($id)
+    {
+        $details = Solutions::findOrFail($id);
+        $details->products = json_decode($details->products, true);
+        return view('backend.home.solutions.edit', compact('details'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $solution = Solutions::findOrFail($id);
+
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'banner_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'banner_items.*.name' => 'required|string|max:255',
+            'banner_items.*.image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ], [
+            'title.required' => 'The title field is required.',
+            'title.max' => 'The title must not exceed 255 characters.',
+            'description.required' => 'The description field is required.',
+            'banner_image.image' => 'The banner must be an image.',
+            'banner_image.mimes' => 'The banner image must be a file of type: jpg, jpeg, png, webp.',
+            'banner_image.max' => 'The banner image size must be less than 2MB.',
+            
+            'banner_items.*.name.required' => 'Each product must have a name.',
+            'banner_items.*.name.max' => 'Product name must not exceed 255 characters.',
+            
+            'banner_items.*.image.image' => 'Each product image must be an actual image file.',
+            'banner_items.*.image.mimes' => 'Each product image must be of type: jpg, jpeg, png, webp.',
+            'banner_items.*.image.max' => 'Each product image must be less than 2MB.',
+        ]);
+        
+
+        if ($request->hasFile('banner_image')) {
+            if ($solution->image && file_exists(public_path('uploads/home/' . $solution->image))) {
+                unlink(public_path('uploads/home/' . $solution->image));
+            }
+
+            $bannerImage = $request->file('banner_image');
+            $bannerImageName = time() . '.' . $bannerImage->getClientOriginalExtension();
+            $bannerImage->move(public_path('uploads/home'), $bannerImageName);
+            $solution->image = $bannerImageName;
+        }
+
+        $existingProducts = $solution->products ? json_decode($solution->products, true) : [];
+
+        // Process product list
+        $products = [];
+        foreach ($request->banner_items as $index => $item) {
+            $imageName = $existingProducts[$index]['image'] ?? null;
+
+            // If new image is uploaded, override the existing one
+            if (isset($request->file('banner_items')[$index]['image'])) {
+                $uploadedImage = $request->file('banner_items')[$index]['image'];
+                $imageName = time() . $index . '.' . $uploadedImage->getClientOriginalExtension();
+                $uploadedImage->move(public_path('uploads/home'), $imageName);
+            }
+
+            $products[] = [
+                'name' => $item['name'],
+                'image' => $imageName,
+            ];
+        }
+
+        // Save changes
+        $solution->title = $request->title;
+        $solution->description = $request->description;
+        $solution->products = json_encode($products);
+        $solution->save();
+
+        return redirect()->route('solutions.index')->with('message', 'Solution updated successfully!');
+    }
+
+
+    public function destroy(string $id)
+    {
+        $data['deleted_by'] =  Auth::user()->id;
+        $data['deleted_at'] =  Carbon::now();
+        try {
+            $industries = Solutions::findOrFail($id);
+            $industries->update($data);
+
+            return redirect()->route('solutions.index')->with('message', 'Details deleted successfully!');
+        } catch (Exception $ex) {
+            return redirect()->back()->with('error', 'Something Went Wrong - ' . $ex->getMessage());
+        }
+    }
+
 
 
 }

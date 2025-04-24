@@ -56,13 +56,33 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Heading</th>
-                                <th>Title</th>
+                                <th>Name</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                           
+                            @foreach ($solutions as $index => $solution)
+                                <tr>
+                                    <td>{{ $index + 1 }}</td>
+                                    <td>{{ $solution->title }}</td>
+                                    <td>
+                                        @if($solution->image)
+                                            <img src="{{ asset('uploads/home/' . $solution->image) }}" alt="Image" style="max-width: 100px;">
+                                        @else
+                                            <span>No Image</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('solutions.edit', $solution->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('solutions.destroy', $solution->id) }}" method="POST" style="display:inline-block;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
 
