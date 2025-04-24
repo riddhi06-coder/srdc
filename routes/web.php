@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
+use App\Http\Controllers\Backend\BannerHomeController;
+
 
 
 // Authentication Routes
@@ -26,3 +28,7 @@ Route::group(['middleware' => ['auth:web', \App\Http\Middleware\PreventBackHisto
 // Route::group(['middleware' => ['auth:web', \App\Http\Middleware\PreventBackHistoryMiddleware::class]], function () {
 //     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 // });
+
+
+// ==== Manage Home Page
+Route::resource('banner-home', BannerHomeController::class);
