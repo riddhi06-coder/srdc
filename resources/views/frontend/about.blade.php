@@ -78,7 +78,7 @@
     </section>
 
 
-    <section class="vision-wrap">
+    <section class="vision-wrap" style="background-image: url('{{ asset('uploads/about/' . $vision->banner_image) }}');">
         <div class="container">
             <div class="row">
             {{-- Aim Section --}}
