@@ -66,6 +66,7 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
 
     
     Route::get('/', [HomeController::class, 'index'])->name('home.page');
+    Route::get('/about-srdc', [HomeController::class, 'about'])->name('about.srdc');
 
    
 });

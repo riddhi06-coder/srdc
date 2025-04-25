@@ -14,6 +14,8 @@ use App\Models\Solutions;
 use App\Models\Description;
 use App\Models\HomeBanner;
 use App\Models\WeOffer;
+use App\Models\AboutUs;
+use App\Models\AimVision;
 
 use Carbon\Carbon;
 
@@ -37,6 +39,16 @@ class HomeController extends Controller
             'banner', 'weOffer', 'solutions',
             'description', 'aboutNos', 'aboutDescriptions',
             'advantageHeadings', 'advantageDescriptions'
+        ));
+    }
+
+    public function about()
+    {
+        $about = AboutUs::whereNull('deleted_by')->first();
+        // dd($about);
+        $vision = AimVision::whereNull('deleted_by')->first();
+        return view('frontend.about', compact(
+            'about', 'vision'
         ));
     }
     

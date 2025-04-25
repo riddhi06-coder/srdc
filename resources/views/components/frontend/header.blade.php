@@ -24,7 +24,7 @@
                                 <a href="{{ route('home.page') }}">About Us <i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu single-column-menu">
                                     <ul>
-                                        <li><a href="{{ route('home.page') }}">History</a></li>
+                                        <li><a href="{{ route('about.srdc') }}">About SRDC</a></li>
                                         <li><a href="{{ route('home.page') }}">R&D Facility</a></li>
                                         <li><a href="{{ route('home.page') }}">Quality Control</a></li>
                                         <li><a href="{{ route('home.page') }}">Manufacturing Facility</a></li>
