@@ -9,6 +9,9 @@ use App\Http\Controllers\Backend\SolutionsController;
 use App\Http\Controllers\Backend\DescriptionController;
 
 
+use App\Http\Controllers\Frontend\HomeController;
+
+
 // Authentication Routes
 Route::get('/login', [LoginController::class, 'login'])->name('admin.login');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('admin.authenticate');
@@ -43,3 +46,19 @@ Route::resource('solutions', SolutionsController::class);
 
 // ==== Manage Description
 Route::resource('description', DescriptionController::class);
+
+
+
+
+
+
+
+// ===================================================================Frontend================================================================
+
+Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHistoryMiddleware::class]],function(){
+
+    
+    Route::get('/', [HomeController::class, 'index'])->name('home.page');
+
+   
+});
