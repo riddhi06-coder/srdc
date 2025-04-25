@@ -75,7 +75,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                                        <a href="{{ route('srdc-about.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                         <form action="{{ route('srdc-about.destroy', $item->id) }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Are you sure?')">
                                             @csrf
                                             @method('DELETE')
