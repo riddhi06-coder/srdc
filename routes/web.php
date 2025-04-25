@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\BannerHomeController;
 use App\Http\Controllers\Backend\WeOfferController;
 use App\Http\Controllers\Backend\SolutionsController;
 use App\Http\Controllers\Backend\DescriptionController;
+use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\AimVisionController;
 
 
 use App\Http\Controllers\Frontend\HomeController;
@@ -47,6 +49,11 @@ Route::resource('solutions', SolutionsController::class);
 // ==== Manage Description
 Route::resource('description', DescriptionController::class);
 
+// ==== Manage About
+Route::resource('srdc-about', AboutController::class);
+
+// ==== Manage About
+Route::resource('aim-vision', AimVisionController::class);
 
 
 

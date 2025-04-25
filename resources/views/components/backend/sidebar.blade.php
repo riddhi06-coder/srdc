@@ -50,6 +50,25 @@
                   </ul>
                 </li>
 
+
+                <li class="sidebar-list {{ request()->routeIs('banner-home.index') ? 'active' : '' }}">
+                  <i class="fa fa-thumb-tack"> </i>
+                  <a class="sidebar-link sidebar-title" href="#">
+                    <svg class="stroke-icon"> 
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-builders') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-builders') }}"></use>
+                    </svg>
+                    <span>About Sara</span>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li><a href="{{ route('srdc-about.index') }}" class="{{ request()->routeIs('srdc-about.index') ? 'active' : '' }}">Journey & Details</a></li>
+                    <li><a href="{{ route('we-offer.index') }}" class="{{ request()->routeIs('we-offer.index') ? 'active' : '' }}">Aim & Vision</a></li>
+                  </ul>
+                </li>
+
+
               </ul>
               <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
             </div>
