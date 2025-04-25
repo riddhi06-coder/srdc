@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\DescriptionController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AimVisionController;
 use App\Http\Controllers\Backend\CramsController;
+use App\Http\Controllers\Backend\CROController;
 
 
 use App\Http\Controllers\Frontend\HomeController;
@@ -59,6 +60,8 @@ Route::resource('aim-vision', AimVisionController::class);
 // ==== Manage CRAMS
 Route::resource('home-crams',  CramsController::class);
 
+// ==== Manage CRO
+Route::resource('home-cro',  CROController::class);
 
 
 
