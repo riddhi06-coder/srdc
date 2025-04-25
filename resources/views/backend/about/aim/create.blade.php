@@ -230,6 +230,29 @@
                     }
                 }
             }
+
+            function previewImage() {
+                const file = document.getElementById('image').files[0];
+                const previewContainer = document.getElementById('ImagePreviewContainer');
+                const previewImage = document.getElementById('image_preview');
+
+                if (file) {
+                    const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+                    if (validImageTypes.includes(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function (e) {
+                            previewImage.src = e.target.result;
+                            previewContainer.style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        alert('Please upload a valid image file (jpg, jpeg, png, webp).');
+                        previewImage.src = '';
+                        previewContainer.style.display = 'none';
+                    }
+                }
+            }
         </script>
 
 
