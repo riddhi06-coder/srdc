@@ -31,7 +31,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li><a href="{{ route('home.page') }}">CRO</a></li>
+                            <li><a href="{{ route('cro') }}">CRO</a></li>
                             <li><a href="{{ route('crams') }}">CRAMS</a></li>
                             <li class="menu-item-has-children">
                                 <a href="{{ route('home.page') }}">Specialty Chemicals <i class="fa fa-angle-down"></i></a>

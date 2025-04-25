@@ -17,6 +17,7 @@ use App\Models\WeOffer;
 use App\Models\AboutUs;
 use App\Models\AimVision;
 use App\Models\CRAMS;
+use App\Models\CRO;
 
 use Carbon\Carbon;
 
@@ -55,9 +56,13 @@ class HomeController extends Controller
     public function crams()
     {
         $about = CRAMS::whereNull('deleted_by')->first();
-        return view('frontend.crams', compact(
-            'about'
-        ));
+        return view('frontend.crams', compact('about'));
+    }
+    
+    public function cro()
+    {
+        $about = CRO::whereNull('deleted_by')->first();
+        return view('frontend.cro', compact('about'));
     }
     
     

@@ -19,7 +19,7 @@
                         <ul class="usefulLinks-List">
                             <li><a href="{{ route('home.page') }}">Home</a></li>
                             <li><a href="{{ route('home.page') }}">About Us</a></li>
-                            <li><a href="{{ route('home.page') }}">CRO</a></li>
+                            <li><a href="{{ route('cro') }}">CRO</a></li>
                             <li><a href="{{ route('crams') }}">CRAMS </a></li>
                             <!--<li><a href="#">Media</a></li>-->
                             <li><a href="{{ route('home.page') }}">Careers</a></li>
