@@ -19,7 +19,7 @@
       </div>
       <div class="container">
         <ul class="list-unstyled">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="{{ route('home.page') }}">Home</a></li>
             <li>About</li>
             <li>{{ $about->banner_heading }}</li>
         </ul>
