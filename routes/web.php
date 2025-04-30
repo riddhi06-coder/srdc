@@ -81,6 +81,8 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
     Route::get('/about-srdc', [HomeController::class, 'about'])->name('about.srdc');
     Route::get('/crams', [HomeController::class, 'crams'])->name('crams');
     Route::get('/cro', [HomeController::class, 'cro'])->name('cro');
+    Route::get('/quality-control', [HomeController::class, 'quality_control'])->name('quality.control');
+    Route::get('/research-development', [HomeController::class, 'rnd'])->name('research.development');
 
    
 });

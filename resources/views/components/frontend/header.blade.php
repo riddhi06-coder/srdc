@@ -25,8 +25,8 @@
                                 <div class="sub-menu single-column-menu">
                                     <ul>
                                         <li><a href="{{ route('about.srdc') }}">About SRDC</a></li>
-                                        <li><a href="{{ route('home.page') }}">R&D Facility</a></li>
-                                        <li><a href="{{ route('home.page') }}">Quality Control</a></li>
+                                        <li><a href="{{ route('research.development') }}">R&D Facility</a></li>
+                                        <li><a href="{{ route('quality.control') }}">Quality Control</a></li>
                                         <li><a href="{{ route('home.page') }}">Manufacturing Facility</a></li>
                                     </ul>
                                 </div>

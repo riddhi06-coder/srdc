@@ -18,6 +18,9 @@ use App\Models\AboutUs;
 use App\Models\AimVision;
 use App\Models\CRAMS;
 use App\Models\CRO;
+use App\Models\Quality;
+use App\Models\Research;
+
 
 use Carbon\Carbon;
 
@@ -65,5 +68,16 @@ class HomeController extends Controller
         return view('frontend.cro', compact('about'));
     }
     
+    public function quality_control()
+    {
+        $quality = Quality::whereNull('deleted_by')->first();
+        return view('frontend.quality', compact('quality'));
+    }
+
+    public function rnd()
+    {
+        $research = Research::whereNull('deleted_by')->first();
+        return view('frontend.research', compact('research'));
+    }
     
 }
