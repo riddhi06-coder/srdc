@@ -57,11 +57,11 @@ p{
 /*Header CSS*/
 header {
 box-shadow: 0 2px 5px -3px rgb(0 0 0 / 30%);
-/*position: fixed;
-top: 0;*/
-width: 100%;
-background: #ffffffed;
-z-index: 99;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #ffffffed;
+  z-index: 99;
 }
 
 .topbar-section {
@@ -327,13 +327,13 @@ text-transform: capitalize;
 position: relative;
 }
 
-.main_menu .menu>ul>li .sub-menu>ul>li>a:before {
+/*.main_menu .menu>ul>li .sub-menu>ul>li>a:before {
 position: absolute;
 content: '\00BB';
 left: -15px;
 top: 9px;
 color: var(--color-two);
-}
+}*/
 
 .main_menu .menu>ul>li .single-column-menu {
 min-width: 280px;
@@ -2565,7 +2565,7 @@ text-align: center;
 .shock-section {
   position: relative;
   z-index: 10;
-  margin-top: 0;
+  margin-top: 94px;
 }
 
 .has-overlay {
@@ -2640,6 +2640,7 @@ option {
 
 .under-const-sec {
   padding: 70px 0;
+  margin-top: 100px;
 }
 
 .under-const-sec .under-const-content-sec {
@@ -2697,6 +2698,7 @@ padding: 10px;
 .breadcrumb-section {
   padding: 0 20px;
   margin: 20px 0 0 0;
+  margin-top: 105px;
 }
 .breadcrumb-section .list-unstyled{
 
@@ -2870,7 +2872,7 @@ line-height: 1.3;
 
 .vision-wrap{
 padding: 80px 0;
-/* background-image: url(../images/home/7951.jpg); */
+background-image: url(../images/home/7951.jpg);
 background-attachment: fixed;
 background-size: cover;
 background-position: center;
@@ -3567,12 +3569,15 @@ transition: ease 0.8s;
 .product_item .product_title h4 a{
 
 }
+.product_sublink{
+
+}
 .product_sublink ul{    
-height: 90px;
-  margin: 0px 0 20px;
+  height: 75px;
   border-top: 1px solid #ccc;
-  padding-top: 5px;
   display: inline-block;
+  margin: 0 0px;
+  padding-top: 10px;
 }
 ul.listing li:before {
   content: "\f00c";
@@ -3600,7 +3605,9 @@ filter: brightness(0%);
 
 }
 .product_link{
-
+  display: inline-block;
+  width: 100%;
+  clear: both;
 }
 .product_link a {
   color: #00b6dd;
@@ -3692,25 +3699,39 @@ padding: 80px 0;
 .pro-img img{
 margin: auto;
 }
+.product-single-item-box-details-row {
+  display: flex;
+  gap: 15px;
+}
+.product-single-item-box-details-row .col-lg-4{
+  border: 1px solid #e2e2e2;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #fcfcfc;
+}
 .product-single-item-box-details {
-  background-color: #eeeeee;
+  /*background-color: #eeeeee;
   padding: 60px 40px;
-  border-radius: 30px;
+  border-radius: 30px;*/
 }
 .product-single-item-box{
-
 }
 .product-single-item-box h2 {
   margin-bottom: 20px;
+  font-size: 18px;
 }
 .product-single-item-box h2 b{
 color: #111;
+  display: block;
+  font-size: 22px;
+  margin-bottom: 5px;
 }
 .product-single-item-box h3 {
   color: #111;
-  border-bottom: 2px solid #b9b9b9;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  border-bottom: 2px solid #dedede;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  font-size: 20px;
 }
 .product-single-item-box h3 img{
 width: 30px;
@@ -3728,5 +3749,100 @@ width: 30px;
   margin: 0px 0;
 }
 .related-product-wrap{
-padding: 0 0 80px 0;
+  padding: 80px 0;
+  background-color: #dfeef1;
+}
+.manufacturing-facility-wrap{
+padding: 80px 0;
+}
+.manufacturing-pharma-wrap{
+  padding: 80px 0;
+  background-color: #dfeef1;
+  position: relative;
+  overflow: hidden;
+}
+.manufacturing-item{
+
+}
+.mT30{
+margin-top: 30px;
+}
+.manufacturing-safety-wrap{
+padding: 80px 0;
+}
+.safety-text {
+position: relative;
+  padding: 60px 60px;
+  border-radius: 20px;
+  background: #f0f0f0;
+  box-shadow: 0px 0px 60px 0px rgba(0, 0, 0, 0.05);
+}
+.safety-text:after{
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: -15px;
+  font-size: 10px;
+  line-height: 1;
+  text-align: center;
+  display: inline-block;
+  height: 90%;
+  width: 15px;
+  background-color: #e5e5e5;
+  border-radius: 20px 0 0 20px;
+}
+.tos-block h2{
+  color: #111;
+  font-size: 28px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+}
+.tos-block ul.listing {
+  margin: 0px 0;
+}
+.tos-wrap {
+  padding: 80px 0;
+}
+.mT0{
+margin-top: 0 !important;
+}
+.tos-wrap ul.listing li {
+  text-align: justify;
+}
+
+
+#whatsapp-icon {
+position: fixed;
+bottom: 20px;
+right: 20px;
+z-index: 9999;
+}
+
+#whatsapp-icon img {
+  width: 40px;
+  height: 40px;
+transition: transform 0.3s ease;
+}
+
+#whatsapp-icon:hover img {
+transform: scale(1.1);
+}
+
+#whatsapp-icon {
+transition: transform 0.3s ease;
+}
+
+#whatsapp-icon:hover {
+transform: scale(1.1);
+}
+.form-radio {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.radio {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  display: contents;
 }

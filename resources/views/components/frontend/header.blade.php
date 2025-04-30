@@ -27,7 +27,7 @@
                                         <li><a href="{{ route('about.srdc') }}">About SRDC</a></li>
                                         <li><a href="{{ route('research.development') }}">R&D Facility</a></li>
                                         <li><a href="{{ route('quality.control') }}">Quality Control</a></li>
-                                        <li><a href="{{ route('home.page') }}">Manufacturing Facility</a></li>
+                                        <li><a href="{{ route('manufacturing.facility') }}">Manufacturing Facility</a></li>
                                     </ul>
                                 </div>
                             </li>

@@ -20,6 +20,8 @@ use App\Models\CRAMS;
 use App\Models\CRO;
 use App\Models\Quality;
 use App\Models\Research;
+use App\Models\Manufacture;
+
 
 
 use Carbon\Carbon;
@@ -78,6 +80,12 @@ class HomeController extends Controller
     {
         $research = Research::whereNull('deleted_by')->first();
         return view('frontend.research', compact('research'));
+    }
+
+    public function manufacturing()
+    {
+        $manufacture = Manufacture::whereNull('deleted_by')->first();
+        return view('frontend.manufacture', compact('manufacture'));
     }
     
 }
