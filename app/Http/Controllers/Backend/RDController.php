@@ -112,7 +112,6 @@ class RDController extends Controller
         $details = Research::findOrFail($id);
         return view('backend.about.research.edit', compact('details'));
     }
-    
 
     public function update(Request $request, $id)
     {
