@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AimVisionController;
 use App\Http\Controllers\Backend\CramsController;
 use App\Http\Controllers\Backend\CROController;
+use App\Http\Controllers\Backend\QualityController;
 
 
 use App\Http\Controllers\Frontend\HomeController;
@@ -56,6 +57,9 @@ Route::resource('srdc-about', AboutController::class);
 
 // ==== Manage About
 Route::resource('aim-vision', AimVisionController::class);
+
+// ==== Manage Quality Control
+Route::resource('home-quality',  QualityController::class);
 
 // ==== Manage CRAMS
 Route::resource('home-crams',  CramsController::class);
