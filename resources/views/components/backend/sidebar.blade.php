@@ -50,7 +50,6 @@
                   </ul>
                 </li>
 
-
                 <li class="sidebar-list {{ request()->routeIs('banner-home.index') ? 'active' : '' }}">
                   <i class="fa fa-thumb-tack"> </i>
                   <a class="sidebar-link sidebar-title" href="#">
@@ -67,6 +66,7 @@
                     <li><a href="{{ route('aim-vision.index') }}" class="{{ request()->routeIs('aim-vision.index') ? 'active' : '' }}">Aim & Vision</a></li>
                     <li><a href="{{ route('home-quality.index') }}" class="{{ request()->routeIs('home-quality.index') ? 'active' : '' }}">Quality Control</a></li>
                     <li><a href="{{ route('home-rnd.index') }}" class="{{ request()->routeIs('home-rnd.index') ? 'active' : '' }}">R&D</a></li>
+                    <li><a href="{{ route('about-manu.index') }}" class="{{ request()->routeIs('about-manu.index') ? 'active' : '' }}">Manufacturing Facility</a></li>
                   </ul>
                 </li>
 
@@ -79,7 +79,6 @@
                     </svg><span>CRAMS</span></a>
                 </li>
 
-
                 <li class="sidebar-list"> <i class="fa fa-thumb-tack"> </i><a class="sidebar-link sidebar-title" href="{{ route('home-cro.index') }}">
                     <svg class="stroke-icon"> 
                       <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-sample-page') }}"></use>
@@ -88,8 +87,6 @@
                       <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-sample-page') }}"></use>
                     </svg><span>CRO</span></a>
                 </li>
-
-
 
               </ul>
               <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
