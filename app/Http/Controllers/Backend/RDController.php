@@ -104,7 +104,99 @@ class RDController extends Controller
             'created_by' => Auth::user()->id,
         ]);
 
-        return redirect()->route('home-r&d.index')->with('message', 'R&D details submitted successfully.');
+        return redirect()->route('home-rnd.index')->with('message', 'R&D details submitted successfully.');
+    }
+
+    public function edit($id)
+    {
+        $details = Research::findOrFail($id);
+        return view('backend.about.research.edit', compact('details'));
+    }
+    
+
+    public function update(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'heading' => 'required|string|max:255',
+            'banner_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'description' => 'required|string',
+
+            'infra_heading' => 'required|string|max:255',
+            'infra_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'infra_description' => 'required|string',
+
+            'innovation_heading' => 'required|string|max:255',
+            'innovation_image_1' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'innovation_image_2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'innovation_image_3' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'innovation_description' => 'required|string',
+        ], [
+            'required' => 'The :attribute field is required.',
+            'image' => 'The :attribute must be an image.',
+            'mimes' => 'The :attribute must be a JPG, JPEG, PNG, or WEBP file.',
+            'max' => 'The :attribute must not exceed 2MB in size.',
+        ]);
+
+        $data = Research::findOrFail($id);
+        $uploadPath = public_path('/uploads/about/');
+
+        // Handle image uploads (optional)
+        if ($request->hasFile('banner_image')) {
+            $bannerFile = $request->file('banner_image');
+            $data->banner_image = time() . rand(10, 99) . '.' . $bannerFile->getClientOriginalExtension();
+            $bannerFile->move($uploadPath, $data->banner_image);
+        }
+
+        if ($request->hasFile('infra_image')) {
+            $infraFile = $request->file('infra_image');
+            $data->infra_image = time() . rand(100, 199) . '.' . $infraFile->getClientOriginalExtension();
+            $infraFile->move($uploadPath, $data->infra_image);
+        }
+
+        if ($request->hasFile('innovation_image_1')) {
+            $file = $request->file('innovation_image_1');
+            $data->innovation_image_1 = time() . rand(200, 299) . '.' . $file->getClientOriginalExtension();
+            $file->move($uploadPath, $data->innovation_image_1);
+        }
+
+        if ($request->hasFile('innovation_image_2')) {
+            $file = $request->file('innovation_image_2');
+            $data->innovation_image_2 = time() . rand(300, 399) . '.' . $file->getClientOriginalExtension();
+            $file->move($uploadPath, $data->innovation_image_2);
+        }
+
+        if ($request->hasFile('innovation_image_3')) {
+            $file = $request->file('innovation_image_3');
+            $data->innovation_image_3 = time() . rand(400, 499) . '.' . $file->getClientOriginalExtension();
+            $file->move($uploadPath, $data->innovation_image_3);
+        }
+
+        // Update text fields
+        $data->heading = $validated['heading'];
+        $data->description = $validated['description'];
+        $data->infra_heading = $validated['infra_heading'];
+        $data->infra_description = $validated['infra_description'];
+        $data->innovation_heading = $validated['innovation_heading'];
+        $data->innovation_description = $validated['innovation_description'];
+        $data->modified_at = Carbon::now();
+        $data->modified_by = Auth::user()->id;
+        $data->save();
+
+        return redirect()->route('home-rnd.index')->with('message', 'R&D details updated successfully.');
+    }
+
+    public function destroy(string $id)
+    {
+        $data['deleted_by'] =  Auth::user()->id;
+        $data['deleted_at'] =  Carbon::now();
+        try {
+            $industries = Research::findOrFail($id);
+            $industries->update($data);
+
+            return redirect()->route('home-rnd.index')->with('message', 'Details deleted successfully!');
+        } catch (Exception $ex) {
+            return redirect()->back()->with('error', 'Something Went Wrong - ' . $ex->getMessage());
+        }
     }
 
 }

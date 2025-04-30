@@ -41,13 +41,13 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('home-r&d.index') }}">Home</a>
+                                    <a href="{{ route('home-rnd.index') }}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">R&D Details</li>
                             </ol>
                         </nav>
 
-                        <a href="{{ route('home-r&d.create') }}" class="btn btn-primary px-5 radius-30">+ Add R&D Details</a>
+                        <a href="{{ route('home-rnd.create') }}" class="btn btn-primary px-5 radius-30">+ Add R&D Details</a>
                     </div>
 
 
@@ -75,8 +75,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('home-r&d.edit', $offer->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                            <form action="{{ route('home-r&d.destroy', $offer->id) }}" method="POST" style="display:inline;">
+                                            <a href="{{ route('home-rnd.edit', $offer->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                            <form action="{{ route('home-rnd.destroy', $offer->id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>

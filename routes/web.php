@@ -69,7 +69,7 @@ Route::resource('home-crams',  CramsController::class);
 Route::resource('home-cro',  CROController::class);
 
 // ==== Manage CRO
-Route::resource('home-r&d',  RDController::class);
+Route::resource('home-rnd',  RDController::class);
 
 
 // ===================================================================Frontend================================================================

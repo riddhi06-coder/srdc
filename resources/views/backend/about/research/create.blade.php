@@ -22,7 +22,7 @@
                 <div class="col-6">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                    <a href="{{ route('home-r&d.index') }}">Home</a>
+                    <a href="{{ route('home-rnd.index') }}">Home</a>
                     </li>
                     <li class="breadcrumb-item active">Add Details</li>
                 </ol>
@@ -47,7 +47,7 @@
                             <div class="col-12">
                             <div class="tab-content" id="wizard-tabContent">
                                 <div class="tab-pane fade show active" id="wizard-contact" role="tabpanel" aria-labelledby="wizard-contact-tab">
-                                    <form class="row g-3 needs-validation custom-input" novalidate action="{{ route('home-r&d.store') }}" method="POST" enctype="multipart/form-data">
+                                    <form class="row g-3 needs-validation custom-input" novalidate action="{{ route('home-rnd.store') }}" method="POST" enctype="multipart/form-data">
                                         @csrf
 
                                         <!-- Banner Heading-->
@@ -185,7 +185,7 @@
                                      
                                         <!-- Form Actions -->
                                         <div class="col-12 text-end">
-                                            <a href="{{ route('home-r&d.index') }}" class="btn btn-danger px-4">Cancel</a>
+                                            <a href="{{ route('home-rnd.index') }}" class="btn btn-danger px-4">Cancel</a>
                                             <button class="btn btn-primary" type="submit">Submit</button>
                                         </div>
                                     </form>
