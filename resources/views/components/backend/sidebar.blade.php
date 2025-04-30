@@ -66,6 +66,7 @@
                     <li><a href="{{ route('srdc-about.index') }}" class="{{ request()->routeIs('srdc-about.index') ? 'active' : '' }}">Journey & Details</a></li>
                     <li><a href="{{ route('aim-vision.index') }}" class="{{ request()->routeIs('aim-vision.index') ? 'active' : '' }}">Aim & Vision</a></li>
                     <li><a href="{{ route('home-quality.index') }}" class="{{ request()->routeIs('home-quality.index') ? 'active' : '' }}">Quality Control</a></li>
+                    <li><a href="{{ route('home-r&d.index') }}" class="{{ request()->routeIs('home-r&d.index') ? 'active' : '' }}">R&D</a></li>
                   </ul>
                 </li>
 

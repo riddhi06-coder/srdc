@@ -41,13 +41,13 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ route('home-quality.index') }}">Home</a>
+                                    <a href="{{ route('home-r&d.index') }}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active" aria-current="page">Quality Control Details</li>
+                                <li class="breadcrumb-item active" aria-current="page">R&D Details</li>
                             </ol>
                         </nav>
 
-                        <a href="{{ route('home-quality.create') }}" class="btn btn-primary px-5 radius-30">+ Add Details</a>
+                        <a href="{{ route('home-r&d.create') }}" class="btn btn-primary px-5 radius-30">+ Add R&D Details</a>
                     </div>
 
 
@@ -62,26 +62,27 @@
                               </tr>
                           </thead>
                           <tbody>
-                              @foreach ($quality as $key => $offer)
-                                <tr>
-                                    <td>{{ $key + 1 }}</td>
-                                    <td>{{ $offer->heading }}</td>
-                                    <td>
-                                        @if ($offer->banner_image)
-                                            <img src="{{ asset('uploads/about/' . $offer->banner_image) }}" alt="Banner Image" style="max-height: 60px;">
-                                        @else
-                                            N/A
-                                        @endif
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('home-quality.edit', $offer->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                        <form action="{{ route('home-quality.destroy', $offer->id) }}" method="POST" style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                            
+                                @foreach ($research as $key => $offer)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $offer->heading }}</td>
+                                        <td>
+                                            @if ($offer->banner_image)
+                                                <img src="{{ asset('uploads/about/' . $offer->banner_image) }}" alt="Banner Image" style="max-height: 100px;">
+                                            @else
+                                                N/A
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('home-r&d.edit', $offer->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                            <form action="{{ route('home-r&d.destroy', $offer->id) }}" method="POST" style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
                               @endforeach
                           </tbody>
                       </table>

@@ -17,12 +17,12 @@
             <div class="page-title">
               <div class="row">
                 <div class="col-6">
-                  <h4>Add What We Offer Form</h4>
+                  <h4>Add Quality Control Form</h4>
                 </div>
                 <div class="col-6">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                    <a href="{{ route('we-offer.index') }}">Home</a>
+                    <a href="{{ route('home-quality.index') }}">Home</a>
                     </li>
                     <li class="breadcrumb-item active">Add Details</li>
                 </ol>
@@ -37,7 +37,7 @@
                 <div class="col-md-12">
                     <div class="card">
                     <div class="card-header">
-                        <h4>What We Offer Details Form</h4>
+                        <h4>Quality Control Details Form</h4>
                         <p class="f-m-light mt-1">Fill up your true details and submit the form.</p>
                     </div>
                     <div class="card-body">
@@ -83,7 +83,7 @@
                                         
                                         <!-- Banner Details table -->
                                         <div class="table-container mb-4" style="margin-bottom: 20px;">
-                                            <h5 class="mb-4"><strong># What We Offer Details</strong></h5>
+                                            <h5 class="mb-4"><strong># Quality Cntrol Details</strong></h5>
                                             <table class="table table-bordered p-3" id="printsTable" style="border: 2px solid #dee2e6;">
                                                 <thead>
                                                     <tr>
