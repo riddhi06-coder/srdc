@@ -88,6 +88,28 @@
                     </svg><span>CRO</span></a>
                 </li>
 
+
+                <li class="sidebar-list {{ request()->routeIs('manage-industries.index') ? 'active' : '' }}">
+                  <i class="fa fa-thumb-tack"> </i>
+                  <a class="sidebar-link sidebar-title" href="#">
+                    <svg class="stroke-icon"> 
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-social') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-social') }}"></use>
+                    </svg>
+                    <span>Speciality Chemical</span>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li><a href="{{ route('manage-industries.index') }}" class="{{ request()->routeIs('manage-industries.index') ? 'active' : '' }}">Industries</a></li>
+                    <li><a href="{{ route('aim-vision.index') }}" class="{{ request()->routeIs('aim-vision.index') ? 'active' : '' }}">Aim & Vision</a></li>
+                    <li><a href="{{ route('home-quality.index') }}" class="{{ request()->routeIs('home-quality.index') ? 'active' : '' }}">Quality Control</a></li>
+                    <li><a href="{{ route('home-rnd.index') }}" class="{{ request()->routeIs('home-rnd.index') ? 'active' : '' }}">R&D</a></li>
+                    <li><a href="{{ route('about-manu.index') }}" class="{{ request()->routeIs('about-manu.index') ? 'active' : '' }}">Manufacturing Facility</a></li>
+                  </ul>
+                </li>
+
+
               </ul>
               <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
             </div>

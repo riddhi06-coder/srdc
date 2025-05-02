@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\CROController;
 use App\Http\Controllers\Backend\QualityController;
 use App\Http\Controllers\Backend\RDController;
 use App\Http\Controllers\Backend\Manufacturingontroller;
+use App\Http\Controllers\Backend\IndustriesController;
 
 
 use App\Http\Controllers\Frontend\HomeController;
@@ -74,6 +75,10 @@ Route::resource('home-rnd',  RDController::class);
 
 // ==== Manage CRO
 Route::resource('about-manu',  Manufacturingontroller::class);
+
+// ==== Manage Industries
+Route::resource('manage-industries',  IndustriesController::class);
+
 
 // ===================================================================Frontend================================================================
 
