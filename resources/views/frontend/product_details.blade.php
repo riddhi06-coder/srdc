@@ -51,10 +51,14 @@
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
             <div class="pro-img">
-              <img src="{{ asset('uploads/speciality_chemicals/' . $details->images) }}" class="img-responsive">
-              <div class="enquiry-btn">
-                <a class="gt-btn style1">Download<i class="fa fa-angle-right"></i></a>
-              </div>
+                <img src="{{ asset('uploads/speciality_chemicals/' . $details->images) }}" class="img-responsive">
+                @if(!empty($details->document))
+                    <div class="enquiry-btn">
+                        <a class="gt-btn style1" href="{{ asset('/uploads/speciality_chemicals/documents/' . $details->document) }}" download>
+                            Download <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                @endif
             </div>
           </div>
           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6">

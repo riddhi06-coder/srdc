@@ -37,6 +37,7 @@ class ProductDetailsController extends Controller
     {
         $request->validate([
             'product_name' => 'required|exists:product,id|unique:product_details,product_id',
+            'product_document' => 'required|mimes:pdf,csv,jpg,jpeg,png,webp|max:3072',
             'product_image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'section_title' => 'required|string|max:255',
             'cas_no' => 'required|string|max:100',
@@ -75,6 +76,14 @@ class ProductDetailsController extends Controller
             $details->images = $imageName;
         }
 
+
+        if ($request->hasFile('product_document')) {
+            $document = $request->file('product_document');
+            $documentName = time() . rand(100, 999) . '.' . $document->getClientOriginalExtension();
+            $document->move(public_path('/uploads/speciality_chemicals/documents/'), $documentName);
+            $details->document = $documentName;
+        }
+
         $details->save();
 
         return redirect()->route('managing-products-details.index')->with('message', 'Product detail added successfully!');
@@ -98,6 +107,7 @@ class ProductDetailsController extends Controller
                 'exists:product,id',
                 Rule::unique('product_details', 'product_id')->ignore($details->id),
             ],
+            'product_document' => 'required|mimes:pdf,csv,jpg,jpeg,png,webp|max:3072',
             'product_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'section_title' => 'required|string|max:255',
             'cas_no' => 'required|string|max:100',
@@ -132,6 +142,14 @@ class ProductDetailsController extends Controller
             $imageName = time() . rand(100, 999) . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('/uploads/speciality_chemicals/'), $imageName);
             $details->images = $imageName;
+        }
+
+        
+        if ($request->hasFile('product_document')) {
+            $document = $request->file('product_document');
+            $documentName = time() . rand(100, 999) . '.' . $document->getClientOriginalExtension();
+            $document->move(public_path('/uploads/speciality_chemicals/documents/'), $documentName);
+            $details->document = $documentName;
         }
 
         $details->save();

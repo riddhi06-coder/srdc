@@ -20,6 +20,7 @@ class ProductDetail extends Model
         'applications_section_title',
         'application_names',
         'images',
+        'document',
         'created_at',
         'created_by',
         'modified_at',

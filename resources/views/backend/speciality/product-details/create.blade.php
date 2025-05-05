@@ -150,6 +150,25 @@
 
                                         </div>
 
+                                       <!-- Document Upload -->
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="product_document">Upload Document <span class="txt-danger">*</span></label>
+                                            <input class="form-control" id="product_document" type="file" name="product_document" 
+                                                accept=".pdf, .csv, .jpg, .jpeg, .png, .webp" required onchange="previewDocumentFile()">
+                                            <div class="invalid-feedback">Please upload a valid file (max 3MB).</div>
+                                            <small class="text-secondary">
+                                                <b>Allowed formats: .pdf, .csv, .jpg, .jpeg, .png, .webp — Max size: 3MB.</b>
+                                            </small>
+
+                                            <!-- Preview Section -->
+                                            <div id="documentPreview" style="margin-top: 10px; display: none;">
+                                                <p><strong>File:</strong> <span id="docName"></span></p>
+                                                <p><strong>Size:</strong> <span id="docSize"></span></p>
+                                                <img id="imagePreview" src="" alt="Image Preview" style="display: none; max-width: 100%; max-height: 200px; margin-top: 10px; border: 1px solid #ddd; padding: 5px;">
+                                            </div>
+                                        </div>
+
+
                                         <!-- Form Actions -->
                                         <div class="col-12 text-end">
                                             <a href="{{ route('managing-products-details.index') }}" class="btn btn-danger px-4">Cancel</a>
@@ -239,6 +258,54 @@
                 });
             });
         </script>
+
+
+        <!--- preview for document---->
+        <script>
+            function previewDocumentFile() {
+                const input = document.getElementById('product_document');
+                const file = input.files[0];
+
+                const preview = document.getElementById('documentPreview');
+                const docName = document.getElementById('docName');
+                const docSize = document.getElementById('docSize');
+                const imagePreview = document.getElementById('imagePreview');
+
+                if (file) {
+                    const sizeInMB = file.size / (1024 * 1024);
+                    if (sizeInMB > 3) {
+                        alert("File size exceeds 3MB. Please choose a smaller file.");
+                        input.value = "";
+                        preview.style.display = "none";
+                        imagePreview.style.display = "none";
+                        return;
+                    }
+
+                    docName.textContent = file.name;
+                    docSize.textContent = sizeInMB.toFixed(2) + ' MB';
+                    preview.style.display = "block";
+
+                    // Show image preview if it's an image file
+                    const imageTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
+                    if (imageTypes.includes(file.type)) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            imagePreview.src = e.target.result;
+                            imagePreview.style.display = "block";
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        imagePreview.style.display = "none";
+                        imagePreview.src = "";
+                    }
+                } else {
+                    preview.style.display = "none";
+                    imagePreview.style.display = "none";
+                }
+            }
+        </script>
+   
+
 
 </body>
 
