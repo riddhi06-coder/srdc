@@ -107,6 +107,9 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
     Route::get('/quality-control', [HomeController::class, 'quality_control'])->name('quality.control');
     Route::get('/research-development', [HomeController::class, 'rnd'])->name('research.development');
     Route::get('/manufacturing-facility', [HomeController::class, 'manufacturing'])->name('manufacturing.facility');
+
+    Route::get('/privacy_policy', [HomeController::class, 'privacy'])->name('privacy.policy');
+    Route::get('/terms_conditions', [HomeController::class, 'terms'])->name('terms.conditions');
     Route::get('/product-by-industries/{slug}', [HomeController::class, 'product_industries'])->name('product.industries');
     Route::get('/product-details/{slug}', [ProductDetailsFController::class, 'product_details'])->name('product.details');
 

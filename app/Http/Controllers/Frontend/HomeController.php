@@ -23,6 +23,8 @@ use App\Models\Research;
 use App\Models\Manufacture;
 use App\Models\Industry;
 use App\Models\Product;
+use App\Models\PrivacyPolicy;
+use App\Models\Terms;
 
 use Carbon\Carbon;
 
@@ -102,4 +104,16 @@ class HomeController extends Controller
         return view('frontend.industry', compact('industry', 'products'));
     }
     
+
+    public function privacy()
+    {
+        $privacy = PrivacyPolicy::whereNull('deleted_by')->first();
+        return view('frontend.privacy', compact('privacy'));
+    }
+
+    public function terms()
+    {
+        $terms = Terms::whereNull('deleted_by')->first();
+        return view('frontend.terms', compact('terms'));
+    }
 }
