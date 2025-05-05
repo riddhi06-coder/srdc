@@ -26,29 +26,32 @@
                             <li><a href="{{ route('home.page') }}">Contact Us</a></li>
                         </ul>
                     </div>
+
                     <div class="col-md-8 col-sm-12 col-xs-12">
                         <div class="links-middle-footer">
                             <h2 class="useful-link-text">Product by Industries</h2>
                             <div class="links-middle-footer-list">
-                                <ul class="usefulLinks-List">
-                                    <li><a href="{{ route('home.page') }}">Electronics Chemicals</a></li>
-                                    <li><a href="{{ route('home.page') }}">Specialty Chemicals</a></li>
-                                    <li><a href="{{ route('home.page') }}">Material Science</a></li>
-                                    <li><a href="{{ route('home.page') }}">Polymer Chemicals</a></li>
-                                    <li><a href="{{ route('home.page') }}">Flame Retardant Chemicals</a></li>
-                                    <li><a href="{{ route('home.page') }}">Specialty Catalyst</a></li>
-                                </ul>
-                                <ul class="usefulLinks-List">
-                                    <li><a href="{{ route('home.page') }}">Pharmaceutical</a></li>
-                                    <li><a href="{{ route('home.page') }}">Nutraceutical</a></li>
-                                    <li><a href="{{ route('home.page') }}">Flavor & Fragrances</a></li>
-                                    <li><a href="{{ route('home.page') }}">Agro Chemicals</a></li>
-                                    <li><a href="{{ route('home.page') }}">Biochemistry</a></li>
-                                    <li><a href="{{ route('home.page') }}">Textile Chemicals</a></li>
-                                </ul>
+                                @php
+                                    $industries = \App\Models\Industry::whereNull('deleted_by')->get();
+                                    $chunks = $industries->chunk(ceil($industries->count() / 2));
+                                @endphp
+
+                                @foreach ($chunks as $chunk)
+                                    <ul class="usefulLinks-List">
+                                        @foreach ($chunk as $industry)
+                                            <li>
+                                                <a href="{{ route('product.industries', ['slug' => $industry->slug]) }}">
+                                                    {{ $industry->industry_name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endforeach
                             </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4">
