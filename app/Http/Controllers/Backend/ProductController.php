@@ -117,7 +117,7 @@ class ProductController extends Controller
             $industries = Product::findOrFail($id);
             $industries->update($data);
 
-            return redirect()->route('manage-productss.index')->with('message', 'Details deleted successfully!');
+            return redirect()->route('manage-products.index')->with('message', 'Details deleted successfully!');
         } catch (Exception $ex) {
             return redirect()->back()->with('error', 'Something Went Wrong - ' . $ex->getMessage());
         }

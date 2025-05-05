@@ -21,8 +21,8 @@ use App\Models\CRO;
 use App\Models\Quality;
 use App\Models\Research;
 use App\Models\Manufacture;
-
-
+use App\Models\Industry;
+use App\Models\Product;
 
 use Carbon\Carbon;
 
@@ -86,6 +86,20 @@ class HomeController extends Controller
     {
         $manufacture = Manufacture::whereNull('deleted_by')->first();
         return view('frontend.manufacture', compact('manufacture'));
+    }
+
+
+    public function product_industries($slug)
+    {
+        $industry = Industry::where('slug', $slug)
+                            ->whereNull('deleted_by')
+                            ->firstOrFail();
+    
+        $products = Product::whereJsonContains('industry_ids', (string) $industry->id)
+                            ->whereNull('deleted_by')
+                            ->get();
+         
+        return view('frontend.industry', compact('industry', 'products'));
     }
     
 }

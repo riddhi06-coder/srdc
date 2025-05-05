@@ -16,7 +16,7 @@ use App\Http\Controllers\Backend\RDController;
 use App\Http\Controllers\Backend\Manufacturingontroller;
 use App\Http\Controllers\Backend\IndustriesController;
 use App\Http\Controllers\Backend\ProductController;
-
+use App\Http\Controllers\Backend\ProductDetailsController;
 
 use App\Http\Controllers\Frontend\HomeController;
 
@@ -80,8 +80,11 @@ Route::resource('about-manu',  Manufacturingontroller::class);
 // ==== Manage Industries
 Route::resource('manage-industries',  IndustriesController::class);
 
-// ==== Manage Industries
+// ==== Manage Products
 Route::resource('manage-products',  ProductController::class);
+
+// ==== Manage Product Details
+Route::resource('managing-products-details',  ProductDetailsController::class);
 
 // ===================================================================Frontend================================================================
 
@@ -95,6 +98,7 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
     Route::get('/quality-control', [HomeController::class, 'quality_control'])->name('quality.control');
     Route::get('/research-development', [HomeController::class, 'rnd'])->name('research.development');
     Route::get('/manufacturing-facility', [HomeController::class, 'manufacturing'])->name('manufacturing.facility');
+    Route::get('/product-by-industries/{slug}', [HomeController::class, 'product_industries'])->name('product.industries');
 
    
 });

@@ -103,9 +103,7 @@
                   <ul class="sidebar-submenu">
                     <li><a href="{{ route('manage-industries.index') }}" class="{{ request()->routeIs('manage-industries.index') ? 'active' : '' }}">Industries</a></li>
                     <li><a href="{{ route('manage-products.index') }}" class="{{ request()->routeIs('manage-products.index') ? 'active' : '' }}">Products</a></li>
-                    <li><a href="{{ route('home-quality.index') }}" class="{{ request()->routeIs('home-quality.index') ? 'active' : '' }}">Quality Control</a></li>
-                    <li><a href="{{ route('home-rnd.index') }}" class="{{ request()->routeIs('home-rnd.index') ? 'active' : '' }}">R&D</a></li>
-                    <li><a href="{{ route('about-manu.index') }}" class="{{ request()->routeIs('about-manu.index') ? 'active' : '' }}">Manufacturing Facility</a></li>
+                    <li><a href="{{ route('managing-products-details.index') }}" class="{{ request()->routeIs('managing-products-details.index') ? 'active' : '' }}">Product Details</a></li>
                   </ul>
                 </li>
 

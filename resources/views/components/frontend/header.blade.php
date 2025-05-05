@@ -33,70 +33,62 @@
                             </li>
                             <li><a href="{{ route('cro') }}">CRO</a></li>
                             <li><a href="{{ route('crams') }}">CRAMS</a></li>
+
+
                             <li class="menu-item-has-children">
                                 <a href="{{ route('home.page') }}">Specialty Chemicals <i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu mega-menu row mega-menu-column-4 scrollbar" id="style-3">
                                     <div class="row">
+
                                         <div class="col-md-3">
                                             <div class="row">
                                                 <div class="col-md-12 list-item">
                                                     <h3>Product by Industries</h3>
                                                     <ul>
-                                                        <li><a href="{{ route('home.page') }}">Pharma</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Biochemistry</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Electronics</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Specialty</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Textiles</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Material Science</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Polymer</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Flame Retardants</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Specialty Catalyst</a></li>
-                                                        <li><a href="{{ route('home.page') }}">Nutraceutical</a></li>
+                                                        @foreach (\App\Models\Industry::whereNull('deleted_by')->get() as $industry)
+                                                            <li>
+                                                                <a href="{{ route('product.industries', ['slug' => $industry->slug]) }}">
+                                                                    {{ $industry->industry_name }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
+
+
                                         <div class="col-md-9 list-item">
                                             <h3>List of Products</h3>
+                                            @php
+                                                use App\Models\Product;
+                                                $products = Product::whereNull('deleted_by')->orderBy('product_name')->get();
+                                            @endphp
+
                                             <div class="row">
-                                                <div class="list-item col-md-4">
-                                                    <ul class="sublist">
-                                                        <li><a href="{{ route('home.page') }}">1,3,5 TRIISOPROPYL BENZENE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2,4,6 TRIISOPROPYLBENZENE SULFONYL CHLORIDE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2,4,6 TRIISOPROPYLBENZENE SULFONAMIDE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">1-BROMO-2,4,6 TRIISOPROPYLBENZENE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">3,8 DIAMINO-6-PHENYLPHENANTHRADINE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">3,8 DINITRO 6 PHENYL PHENANTHARDINE</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="list-item col-md-4">
-                                                    <ul class="sublist">
-                                                        <li><a href="{{ route('home.page') }}">1,3,5 TRIBROMO BENZENE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2,4,6 TRIBROMO ANILINE</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2,4,6 TRIBROMO PHENOL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">4 IODO BPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2 IODO BIPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2 BROMO BIPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">4 BROMO BIPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">4 BROMO 4' IODO BIPHENYL</li>
-                                                    </ul>
-                                                </div>
-                                                <div class="list-item col-md-4">
-                                                    <ul class="sublist">
-                                                        <li><a href="{{ route('home.page') }}">4,4' DIBROMO BIPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">4 NITRO BIPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">4 ,4' DIIODO BIPHENYL</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2-Bromo-3,6-dimethoxy-2',4',6'-tri-i-propyl-1,1'-biphenyl</a></li>
-                                                        <li><a href="{{ route('home.page') }}">2-Bromo-2',4',6'-tri-i-propyl-1,1'-biphenyl</a></li>
-                                                        <li><a href="{{ route('home.page') }}">N,2,3-trimethyl-2-isopropylbutamide (WS-23)</a></li>
-                                                    </ul>
-                                                </div>
+                                                @foreach ($products->chunk(ceil($products->count() / 3)) as $chunk)
+                                                    <div class="list-item col-md-4">
+                                                        <ul class="sublist">
+                                                            @foreach ($chunk as $product)
+                                                                <li>
+                                                                    <a href="#">
+                                                                        {{ $product->product_name }}
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @endforeach
                                             </div>
+
+
                                         </div>
                                     </div>
                                 </div>
 
                             </li>
+
+
                             <li><a href="{{ route('home.page') }}">Careers</a></li>
                             <li><a href="{{ route('home.page') }}">Contact Us</a></li>
                         </ul>
