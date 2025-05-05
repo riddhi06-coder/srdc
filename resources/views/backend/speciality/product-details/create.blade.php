@@ -168,7 +168,6 @@
                                             </div>
                                         </div>
 
-
                                         <!-- Form Actions -->
                                         <div class="col-12 text-end">
                                             <a href="{{ route('managing-products-details.index') }}" class="btn btn-danger px-4">Cancel</a>

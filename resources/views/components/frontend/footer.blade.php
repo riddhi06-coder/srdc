@@ -24,6 +24,8 @@
                             <!--<li><a href="#">Media</a></li>-->
                             <li><a href="{{ route('home.page') }}">Careers</a></li>
                             <li><a href="{{ route('home.page') }}">Contact Us</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-condition.html">Terms & Conditions</a></li>
                         </ul>
                     </div>
 

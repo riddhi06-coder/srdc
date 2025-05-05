@@ -42,7 +42,7 @@
 <script>
   $(document).ready(function() {
     $('#summernote').summernote({
-      height: 200, // Adjust height as needed
+      height: 300, // Adjust height as needed
       focus: true   // Focus the editor when initialized
     });
   });

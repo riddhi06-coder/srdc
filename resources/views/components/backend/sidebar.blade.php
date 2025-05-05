@@ -106,6 +106,24 @@
                     <li><a href="{{ route('managing-products-details.index') }}" class="{{ request()->routeIs('managing-products-details.index') ? 'active' : '' }}">Product Details</a></li>
                   </ul>
                 </li>
+                
+                <li class="sidebar-list {{ request()->routeIs('manage-privacy.index') ? 'active' : '' }}">
+                  <i class="fa fa-thumb-tack"> </i>
+                  <a class="sidebar-link sidebar-title" href="#">
+                    <svg class="stroke-icon"> 
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-board') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#stroke-board') }}"></use>
+                    </svg>
+                    <span>Information Pages</span>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li><a href="{{ route('manage-privacy.index') }}" class="{{ request()->routeIs('manage-privacy.index') ? 'active' : '' }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('manage-products.index') }}" class="{{ request()->routeIs('manage-products.index') ? 'active' : '' }}">Terms & Conditions</a></li>
+                    <li><a href="{{ route('managing-products-details.index') }}" class="{{ request()->routeIs('managing-products-details.index') ? 'active' : '' }}">Contact Details</a></li>
+                  </ul>
+                </li>
 
 
               </ul>
