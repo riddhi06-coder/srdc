@@ -92,7 +92,7 @@ Route::resource('managing-products-details',  ProductDetailsController::class);
 Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHistoryMiddleware::class]],function(){
 
     
-    Route::get('/', [HomeController::class, 'index'])->name('home.page');
+    Route::get('/home', [HomeController::class, 'index'])->name('home.page');
     Route::get('/about-srdc', [HomeController::class, 'about'])->name('about.srdc');
     Route::get('/crams', [HomeController::class, 'crams'])->name('crams');
     Route::get('/cro', [HomeController::class, 'cro'])->name('cro');
