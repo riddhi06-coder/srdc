@@ -124,3 +124,37 @@ $(document).ready(function() {
         }
     })
 })
+
+$('.relatedproduct').owlCarousel({
+     loop: false,
+     items: 2,
+     margin: 20,
+     mouseDrag: true,
+     autoplay: false,
+     autoplayTimeout: 5000,
+     dots: true,
+     autoplayHoverPause: false,
+     nav: false,
+     navText: ["<span class='fa fa-angle-left'></span>", "<span class='fa fa-angle-right'></span>"],
+     responsiveClass: true,
+     responsive: {
+         0: {
+             items: 1
+         },
+         600: {
+             items: 2
+         },
+         1000: {
+             items: 3
+         }
+     }
+});
+
+/*==========   Add active class to accordions   ==========*/
+    $('.accordion-header').on('click', function () {
+        $(this).parent('.accordion-item').toggleClass('opened');
+        $(this).parent('.accordion-item').siblings().removeClass('opened');
+    })
+    $('.accordion-title').on('click', function (e) {
+        e.preventDefault()
+    });

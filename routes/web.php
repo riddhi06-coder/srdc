@@ -19,6 +19,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductDetailsController;
 
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ProductDetailsFController;
 
 
 // Authentication Routes
@@ -99,6 +100,7 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
     Route::get('/research-development', [HomeController::class, 'rnd'])->name('research.development');
     Route::get('/manufacturing-facility', [HomeController::class, 'manufacturing'])->name('manufacturing.facility');
     Route::get('/product-by-industries/{slug}', [HomeController::class, 'product_industries'])->name('product.industries');
+    Route::get('/product-details/{slug}', [ProductDetailsFController::class, 'product_details'])->name('product.details');
 
    
 });

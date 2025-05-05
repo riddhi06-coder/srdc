@@ -71,7 +71,7 @@
                                                         <ul class="sublist">
                                                             @foreach ($chunk as $product)
                                                                 <li>
-                                                                    <a href="#">
+                                                                    <a href="{{ route('product.details', $product->slug) }}">
                                                                         {{ $product->product_name }}
                                                                     </a>
                                                                 </li>
