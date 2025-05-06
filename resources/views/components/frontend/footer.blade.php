@@ -35,7 +35,7 @@
                             <li><a href="{{ route('cro') }}">CRO</a></li>
                             <li><a href="{{ route('crams') }}">CRAMS </a></li>
                             <!--<li><a href="#">Media</a></li>-->
-                            <li><a href="{{ route('home.page') }}">Careers</a></li>
+                            <li><a href="{{ route('careers.us') }}">Careers</a></li>
                             <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                             <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                             <li><a href="{{ route('terms.conditions') }}">Terms & Conditions</a></li>

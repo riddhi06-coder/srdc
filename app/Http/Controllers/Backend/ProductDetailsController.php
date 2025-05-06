@@ -36,7 +36,11 @@ class ProductDetailsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'product_name' => 'required|exists:product,id|unique:product_details,product_id',
+           'product_name' => [
+                'required',
+                'exists:product,id',
+                Rule::unique('product_details', 'product_id')->whereNull('deleted_by'),
+            ],
             'product_document' => 'required|mimes:pdf,csv,jpg,jpeg,png,webp|max:3072',
             'product_image' => 'required|image|mimes:jpg,jpeg,png,webp|max:2048',
             'section_title' => 'required|string|max:255',

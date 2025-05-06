@@ -89,7 +89,7 @@
                             </li>
 
 
-                            <li><a href="{{ route('home.page') }}">Careers</a></li>
+                            <li><a href="{{ route('careers.us') }}">Careers</a></li>
                             <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                         </ul>
                     </nav>
