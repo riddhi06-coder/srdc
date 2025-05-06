@@ -116,4 +116,9 @@ class HomeController extends Controller
         $terms = Terms::whereNull('deleted_by')->first();
         return view('frontend.terms', compact('terms'));
     }
+
+    public function thankyou()
+    {
+        return view('frontend.thankyou');
+    }
 }
