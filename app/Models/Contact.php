@@ -20,6 +20,7 @@ class Contact extends Model
         'company_description',
         'platforms',
         'social_urls',
+        'map',
         'created_at',
         'created_by',
         'modified_at',

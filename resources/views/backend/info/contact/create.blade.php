@@ -80,6 +80,13 @@
                                         </div>
 
 
+                                        <!-- Map.-->
+                                        <div class="col-md-6">
+                                            <label class="form-label" for="map">Map URL<span class="txt-danger">*</span></label>
+                                            <input class="form-control" id="map" type="text" name="map" placeholder="Enter Map URL" value="{{ old('map') }}" required>
+                                            <div class="invalid-feedback">Please enter a Map URL.</div>
+                                        </div>
+
                                         <!-- Description -->
                                         <div class="col-md-12" style="margin-bottom: 20px;">
                                             <label class="form-label" for="company_description">Company Description <span class="txt-danger">*</span></label>

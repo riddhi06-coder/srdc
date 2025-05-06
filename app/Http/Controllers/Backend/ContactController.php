@@ -39,9 +39,11 @@ class ContactController extends Controller
             'company_description' => 'required|string',
             'social_media_platform.*' => 'required|string|max:50',
             'social_media_url.*' => 'required|url|max:255',
+            'map' => 'required|string|max:755',
         ], [
             'address.required' => 'The address field is required.',
             'location.required' => 'The location field is required.',
+            'map.required' => 'The location field is required.',
             'email.email' => 'Please enter a valid email address.',
             'contact.max' => 'The contact number must not exceed 10 characters.',
             'company_description.required' => 'Company description is required.',
@@ -56,6 +58,7 @@ class ContactController extends Controller
         Contact::create([
             'address' => $validated['address'],
             'location' => $validated['location'],
+            'map' => $validated['map'],
             'email' => $validated['email'] ?? null,
             'contact' => $validated['contact'] ?? null,
             'company_description' => $validated['company_description'],
@@ -79,6 +82,7 @@ class ContactController extends Controller
         $validated = $request->validate([
             'address' => 'required|string|max:255',
             'location' => 'required|string|max:755',
+            'map' => 'required|string|max:755',
             'email' => 'nullable|email|max:255',
             'contact' => 'nullable|numeric|digits_between:1,10',
             'company_description' => 'required|string',
@@ -87,6 +91,7 @@ class ContactController extends Controller
         ], [
             'address.required' => 'The address field is required.',
             'location.required' => 'The location field is required.',
+            'map.required' => 'The location field is required.',
             'email.email' => 'Please enter a valid email address.',
             'contact.numeric' => 'The contact number must be numeric.',
             'contact.digits_between' => 'The contact number must not exceed 10 digits.',
@@ -104,6 +109,7 @@ class ContactController extends Controller
         $contact->update([
             'address' => $validated['address'],
             'location' => $validated['location'],
+            'map' => $validated['map'],
             'email' => $validated['email'] ?? null,
             'contact' => $validated['contact'] ?? null,
             'company_description' => $validated['company_description'],

@@ -1,16 +1,29 @@
 <footer>
     <div class="container-fluid">
+
+        @php
+            $contact = \App\Models\Contact::whereNull('deleted_by')->first();
+            $platforms = json_decode($contact->platforms ?? '[]', true);
+            $urls = json_decode($contact->social_urls ?? '[]', true);
+
+            // Optional map of platform names to font-awesome icon classes
+            $icons = [
+                'Facebook' => 'fa-facebook',
+                'LinkedIn' => 'fa-linkedin',
+                'Twitter' => 'fa-twitter',
+                'Instagram' => 'fa-instagram',
+                'Youtube' => 'fa-youtube',
+                'Watsapp' => 'fa-whatsapp',
+                'Pinterest' => 'fa-pinterest',
+            ];
+        @endphp
+
         <div class="row">
             <div class="col-xxl-3 col-xl-3 col-lg-3 col-md-3 col-sm-4">
                 <a href="{{ route('home.page') }}">
                     <img src="{{ asset('frontend/assets/images/home/footer-logo.webp') }}" alt="footer-logo" class="footer-logo">
                 </a>
-                <p class="morbi">
-                    Established in 1992, SARA Research & Development Centre (SRDC) has evolved into a leader
-                    in chemical research, development, and manufacturing. With a strong foundation in scientific
-                    expertise and innovation, we have consistently pushed the boundaries of process chemistry and
-                    specialty chemical production.
-                </p>
+                <p class="morbi">{!! $contact->company_description!!}</p>
             </div>
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-4">
                 <div class="row two-rows-wrap">
@@ -23,7 +36,7 @@
                             <li><a href="{{ route('crams') }}">CRAMS </a></li>
                             <!--<li><a href="#">Media</a></li>-->
                             <li><a href="{{ route('home.page') }}">Careers</a></li>
-                            <li><a href="{{ route('home.page') }}">Contact Us</a></li>
+                            <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                             <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                             <li><a href="{{ route('terms.conditions') }}">Terms & Conditions</a></li>
                         </ul>
@@ -60,12 +73,12 @@
                 <h2 class="useful-link-text">Contact Us</h2>
                 <div class="head-phone-white-main">
                     <div class="headphone-white">
-                        <img src="https://sararesearch.com/frontend/assets/images/icons/location-blue.webp" alt="loaction-white">
+                        <img src="{{ asset('frontend/assets/images/icons/location-blue.webp') }}" alt="loaction-white">
                     </div>
                     <div>
                         <p class="CallUs">Find Us</p>
-                        <p class="CallUs-phone">W‐250, M.I.D.C, TTC,<br> Rabale, Navi Mumbai ‐ 400 701,<br> Maharashtra, India</p>
-                        <a href="https://g.co/kgs/RcZVcdS" class="view-map-btn" target="_blank">View Map</a>
+                        <p class="CallUs-phone">{{ $contact->address}}</p>
+                        <a href="{{ $contact->map}}" class="view-map-btn" target="_blank">View Map</a>
                     </div>
                 </div>
             </div>
@@ -79,28 +92,24 @@
         <div class="rights-reserved">
             <h2>
                 <div id="copyright">
-                    Copyright © 2025 SRDC. All rights reserved. Designed By
+                    Copyright © <?php echo date('Y'); ?> SRDC. All rights reserved. Designed By
                     <a href="http://www.matrixbricks.com" target="_blank">
                         Matrix Bricks
                     </a>
                 </div>
             </h2>
             <div class="home-media-icon-main-head">
-                <a href="#">
-                    <div class="home-media-icon-main">
-                        <i class="fa fa-facebook"></i>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="home-media-icon-main">
-                        <i class="fa fa-linkedin"></i>
-                    </div>
-                </a>
-                <a href="#">
-                    <div class="home-media-icon-main">
-                        <i class="fa fa-twitter"></i>
-                    </div>
-                </a>
+                @foreach($platforms as $index => $platform)
+                    @php
+                        $url = $urls[$index] ?? '#';
+                        $iconClass = $icons[$platform] ?? 'fa-globe'; // fallback icon
+                    @endphp
+                    <a href="{{ $url }}" target="_blank">
+                        <div class="home-media-icon-main">
+                            <i class="fa {{ $iconClass }}"></i>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
