@@ -273,7 +273,7 @@
                             <div class="row gx-2">
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control @error('f_name') is-invalid @enderror" type="text" id="f_name" name="f_name" placeholder="First Name" value="{{ old('f_name') }}">
+                                        <input class="form-control @error('f_name') is-invalid @enderror" type="text" id="f_name" name="f_name" placeholder="First Name*" value="{{ old('f_name') }}">
                                         @error('f_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -283,7 +283,7 @@
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control @error('l_name') is-invalid @enderror" type="text" id="l_name" name="l_name" placeholder="Last Name" value="{{ old('l_name') }}">
+                                        <input class="form-control @error('l_name') is-invalid @enderror" type="text" id="l_name" name="l_name" placeholder="Last Name*" value="{{ old('l_name') }}">
                                         @error('l_name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -293,7 +293,7 @@
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                                        <input class="form-control @error('email') is-invalid @enderror" type="email" id="email" name="email" placeholder="Email*" value="{{ old('email') }}">
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -303,7 +303,7 @@
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control @error('phone') is-invalid @enderror" maxlength="10" type="text" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}">
+                                        <input class="form-control @error('phone') is-invalid @enderror" maxlength="10" type="text" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -314,7 +314,7 @@
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="form-control @error('service') is-invalid @enderror" id="service" name="service">
-                                            <option value="" >Select Service</option>
+                                            <option value="" >Select Service*</option>
                                             <option value="CRO" {{ old('service') == 'CRO' ? 'selected' : '' }}>CRO</option>
                                             <option value="CRAMS" {{ old('service') == 'CRAMS' ? 'selected' : '' }}>CRAMS</option>
                                             <option value="Specialty Chemicals" {{ old('service') == 'Specialty Chemicals' ? 'selected' : '' }}>Specialty Chemicals</option>
@@ -329,7 +329,7 @@
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <select class="form-control @error('country') is-invalid @enderror" id="country" name="country">
-                                            <option value="">Select Country</option>
+                                            <option value="">Select Country*</option>
                                             <option value="Afghanistan" {{ old('country') == 'Afghanistan' ? 'selected' : '' }}>Afghanistan</option>
                                             <option value="Albania" {{ old('country') == 'Albania' ? 'selected' : '' }}>Albania</option>
                                             <option value="Algeria" {{ old('country') == 'Algeria' ? 'selected' : '' }}>Algeria</option>
@@ -357,7 +357,7 @@
                                 </div>
                                 <div class="col-xl-12 col-md-12">
                                     <div class="form-group">
-                                        <textarea class="form-control @error('user_message') is-invalid @enderror" id="user_message" name="user_message" cols="20" rows="3" placeholder="Message" value="{{ old('user_message') }}">{{ old('user_message') }}</textarea>
+                                        <textarea class="form-control @error('user_message') is-invalid @enderror" id="user_message" name="user_message" cols="20" rows="3" placeholder="Message*" value="{{ old('user_message') }}">{{ old('user_message') }}</textarea>
                                         @error('message')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

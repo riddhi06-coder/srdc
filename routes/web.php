@@ -47,12 +47,6 @@ Route::group(['middleware' => ['auth:web', \App\Http\Middleware\PreventBackHisto
         })->name('admin.dashboard');
 });
 
-
-// Route::group(['middleware' => ['auth:web', \App\Http\Middleware\PreventBackHistoryMiddleware::class]], function () {
-//     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
-// });
-
-
 // ==== Manage Banner Image on home page
 Route::resource('banner-home', BannerHomeController::class);
 

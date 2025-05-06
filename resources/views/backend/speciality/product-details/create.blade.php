@@ -66,8 +66,8 @@
 
                                         <!-- Image Upload -->
                                         <div class="col-md-6">
-                                            <label class="form-label" for="product_image">Product Image <span class="txt-danger">*</span></label>
-                                            <input class="form-control" id="product_image" type="file" name="product_image" accept=".jpg, .jpeg, .png, .webp" required onchange="previewBannerImage()">
+                                            <label class="form-label" for="product_image">Product Image </label>
+                                            <input class="form-control" id="product_image" type="file" name="product_image" accept=".jpg, .jpeg, .png, .webp" onchange="previewBannerImage()">
                                             <div class="invalid-feedback">Please upload an image.</div>
                                             <small class="text-secondary"><b>Note: The file size should be less than 2MB.</b></small>
                                             <br>
@@ -152,9 +152,9 @@
 
                                        <!-- Document Upload -->
                                         <div class="col-md-6">
-                                            <label class="form-label" for="product_document">Upload Document <span class="txt-danger">*</span></label>
+                                            <label class="form-label" for="product_document">Upload Document </label>
                                             <input class="form-control" id="product_document" type="file" name="product_document" 
-                                                accept=".pdf, .csv, .jpg, .jpeg, .png, .webp" required onchange="previewDocumentFile()">
+                                                accept=".pdf, .csv, .jpg, .jpeg, .png, .webp" onchange="previewDocumentFile()">
                                             <div class="invalid-feedback">Please upload a valid file (max 3MB).</div>
                                             <small class="text-secondary">
                                                 <b>Allowed formats: .pdf, .csv, .jpg, .jpeg, .png, .webp — Max size: 3MB.</b>

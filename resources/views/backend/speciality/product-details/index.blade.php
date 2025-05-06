@@ -57,7 +57,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Product Name</th>
-                                <th>Product Image</th>
+                                <!-- <th>Product Image</th> -->
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -66,13 +66,13 @@
                                 <tr>
                                     <td>{{ $index + 1 }}</td>
                                     <td>{{ $productDetail->product->product_name ?? 'N/A' }}</td>
-                                    <td>
+                                    <!-- <td>
                                         @if($productDetail->images)
                                             <img src="{{ asset('/uploads/speciality_chemicals/' . $productDetail->images) }}" alt="Product Image" style="height: 100px;">
                                         @else
                                             No image
                                         @endif
-                                    </td>
+                                    </td> -->
                                     <td>
                                         <a href="{{ route('managing-products-details.edit', $productDetail->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                         <form action="{{ route('managing-products-details.destroy', $productDetail->id) }}" method="POST" style="display:inline-block;">
