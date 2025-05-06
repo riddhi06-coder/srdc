@@ -109,9 +109,8 @@ class ProductDetailsController extends Controller
             'product_name' => [
                 'required',
                 'exists:product,id',
-                Rule::unique('product_details', 'product_id')->ignore($details->id),
             ],
-            'product_document' => 'required|mimes:pdf,csv,jpg,jpeg,png,webp|max:3072',
+            'product_document' => 'nullable|mimes:pdf,csv,jpg,jpeg,png,webp|max:3072',
             'product_image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'section_title' => 'required|string|max:255',
             'cas_no' => 'required|string|max:100',
