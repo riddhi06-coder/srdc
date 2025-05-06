@@ -107,6 +107,7 @@
                   </ul>
                 </li>
                 
+
                 <li class="sidebar-list {{ request()->routeIs('manage-privacy.index') ? 'active' : '' }}">
                   <i class="fa fa-thumb-tack"> </i>
                   <a class="sidebar-link sidebar-title" href="#">
@@ -121,7 +122,7 @@
                   <ul class="sidebar-submenu">
                     <li><a href="{{ route('manage-privacy.index') }}" class="{{ request()->routeIs('manage-privacy.index') ? 'active' : '' }}">Privacy Policy</a></li>
                     <li><a href="{{ route('manage-terms.index') }}" class="{{ request()->routeIs('manage-terms.index') ? 'active' : '' }}">Terms & Conditions</a></li>
-                    <li><a href="{{ route('managing-products-details.index') }}" class="{{ request()->routeIs('managing-products-details.index') ? 'active' : '' }}">Contact Details</a></li>
+                    <li><a href="{{ route('manage-contact.index') }}" class="{{ request()->routeIs('manage-contact.index') ? 'active' : '' }}">Contact Details</a></li>
                   </ul>
                 </li>
 
