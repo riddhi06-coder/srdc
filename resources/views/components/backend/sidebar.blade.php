@@ -127,6 +127,24 @@
                 </li>
 
 
+                <li class="sidebar-list {{ request()->routeIs('manage-career.index') ? 'active' : '' }}">
+                  <i class="fa fa-thumb-tack"> </i>
+                  <a class="sidebar-link sidebar-title" href="#">
+                    <svg class="stroke-icon"> 
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#course-1') }}"></use>
+                    </svg>
+                    <svg class="fill-icon">
+                      <use href="{{ asset('admin/assets/svg/icon-sprite.svg#course-1') }}"></use>
+                    </svg>
+                    <span>Career</span>
+                  </a>
+                  <ul class="sidebar-submenu">
+                    <li><a href="{{ route('manage-career.index') }}" class="{{ request()->routeIs('manage-career.index') ? 'active' : '' }}">Page Details</a></li>
+                    <li><a href="{{ route('manage-contact.index') }}" class="{{ request()->routeIs('manage-contact.index') ? 'active' : '' }}">Job Details</a></li>
+                  </ul>
+                </li>
+
+
               </ul>
               <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
             </div>

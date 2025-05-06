@@ -20,6 +20,8 @@ use App\Http\Controllers\Backend\ProductDetailsController;
 use App\Http\Controllers\Backend\PrivacyController;
 use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Backend\ContactController;
+use App\Http\Controllers\Backend\CareerController;
+
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductDetailsFController;
@@ -97,8 +99,11 @@ Route::resource('manage-privacy',  PrivacyController::class);
 // ==== Manage Terms & Condition
 Route::resource('manage-terms',  TermsController::class);
 
-// ==== Manage Terms & Condition
+// ==== Manage Contact
 Route::resource('manage-contact',  ContactController::class);
+
+// ==== Manage Career
+Route::resource('manage-career',  CareerController::class);
 
 // ===================================================================Frontend================================================================
 
