@@ -140,7 +140,7 @@
                   </a>
                   <ul class="sidebar-submenu">
                     <li><a href="{{ route('manage-career.index') }}" class="{{ request()->routeIs('manage-career.index') ? 'active' : '' }}">Page Details</a></li>
-                    <li><a href="{{ route('manage-contact.index') }}" class="{{ request()->routeIs('manage-contact.index') ? 'active' : '' }}">Job Details</a></li>
+                    <li><a href="{{ route('manage-job.index') }}" class="{{ request()->routeIs('manage-job.index') ? 'active' : '' }}">Job Details</a></li>
                   </ul>
                 </li>
 

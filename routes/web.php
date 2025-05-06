@@ -21,6 +21,7 @@ use App\Http\Controllers\Backend\PrivacyController;
 use App\Http\Controllers\Backend\TermsController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\CareerController;
+use App\Http\Controllers\Backend\JobController;
 
 
 use App\Http\Controllers\Frontend\HomeController;
@@ -104,6 +105,9 @@ Route::resource('manage-contact',  ContactController::class);
 
 // ==== Manage Career
 Route::resource('manage-career',  CareerController::class);
+
+// ==== Manage Job
+Route::resource('manage-job',  JobController::class);
 
 // ===================================================================Frontend================================================================
 
