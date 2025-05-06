@@ -59,26 +59,26 @@
                                         {{-- <h2 style="color:#1e1e2d; font-weight:600; margin-bottom:20px; font-size:24px; text-decoration: underline;">
                                             Contact Enquiry Details
                                         </h2> --}}
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
                                             <strong>First Name:</strong> {{ $f_name }}
                                         </p>
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
                                             <strong>Last Name:</strong> {{ $l_name }}
                                         </p>
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
                                             <strong>Email:</strong> {{ $email }}
                                         </p>
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
                                             <strong>Phone:</strong> {{ $phone }}
                                         </p>
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
                                             <strong>Service:</strong> {{ $service }}
                                         </p>
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
                                             <strong>Country:</strong> {{ $country }}
                                         </p>
-                                        <p style="color:#44474d; font-size:18px; line-height:24px; text-align:left;">
-                                            <strong>Message:</strong><br>{{ e($user_message) }}
+                                        <p style="font-size:16px; line-height:24px; text-align:left;">
+                                            <strong>Message:</strong>{{ e($user_message) }}
                                         </p>
                                     </td>
                                 </tr>
@@ -91,7 +91,7 @@
                     <tr>
                         <td style="text-align:center;">
                             <p style="font-size:16px; color:#555; line-height:18px; margin:0;">
-                                &copy; 2025 SRDC. All rights reserved.
+                                &copy; 2025 SARA Research & Development Centre (SRDC). All rights reserved.
                             </p>
                         </td>
                     </tr>

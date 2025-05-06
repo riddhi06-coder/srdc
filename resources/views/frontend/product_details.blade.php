@@ -155,43 +155,72 @@
             <h4 class="modal-title">Enquire Now</h4>
           </div>
           <div class="modal-body">
-            <form action="#" method="post" class="careers-form" id="contactForm">
-              <div class="row gx-2">
-                <!-- First Name -->
-                <div class="col-xl-6 col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <input type="text" id="first_name" class="form-control" name="first_name" placeholder="First Name">
+            <form action="{{ route('product.enquiry') }}" method="post" class="careers-form" id="contactForm">
+              @csrf
+                <div class="row gx-2">
+                  <!-- Hidden Product Name Field -->
+                  <input type="hidden" name="product_name" value="{{ $details->product->product_name }}">
+
+                  <!-- First Name -->
+                  <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" id="first_name" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="{{ old('f_name') }}">
+                    </div>
+                    @error('first_name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                  </div>
+                  <!-- Last Name -->
+                  <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" id="last_name" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
+                      @error('last_name')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+                  <!-- Email -->
+                  <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <input type="email" id="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                      @error('email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+                  <!-- Phone -->
+                  <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" id="phone" maxlength="10" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}">
+                      @error('phone')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+                  <!-- Message -->
+                  <div class="col-xl-12 col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" name="message" id="message" cols="20" rows="3" placeholder="Message">{{ old('message') }}</textarea>
+                      @error('message')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+                  <!-- Submit Button -->
+                  <div class="col-12 text-center">
+                    <button type="submit" class="gt-btn style1">Submit <i class="fa fa-angle-right"></i></button>
                   </div>
                 </div>
-                <!-- Last Name -->
-                <div class="col-xl-6 col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last Name">
-                  </div>
-                </div>
-                <!-- Email -->
-                <div class="col-xl-6 col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <input type="email" id="email" class="form-control" name="email" placeholder="Email">
-                  </div>
-                </div>
-                <!-- Phone -->
-                <div class="col-xl-6 col-md-6 col-sm-6">
-                  <div class="form-group">
-                    <input type="text" id="phone" maxlength="10" class="form-control" name="phone" placeholder="Phone">
-                  </div>
-                </div>
-                <!-- Message -->
-                <div class="col-xl-12 col-md-12">
-                  <div class="form-group">
-                    <textarea class="form-control" name="message" id="message" cols="20" rows="3" placeholder="Message"></textarea>
-                  </div>
-                </div>
-                <!-- Submit Button -->
-                <div class="col-12 text-center">
-                  <button type="submit" class="gt-btn style1">Submit <i class="fa fa-angle-right"></i></button>
-                </div>
-              </div>
             </form>
           </div>
         </div>
