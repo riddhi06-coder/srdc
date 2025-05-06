@@ -36,7 +36,6 @@ class HomeController extends Controller
         $banner = HomeBanner::whereNull('deleted_by')->first();
         $weOffer = WeOffer::whereNull('deleted_by')->first();
         $solutions = Solutions::whereNull('deleted_by')->latest()->get();
-    
         $description = Description::latest()->first();
     
         $aboutNos = json_decode($description->about_no, true);

@@ -62,7 +62,7 @@ class ContactUsController extends Controller
             Mail::send('frontend.home_contact', $data, function ($message) {
                 $message->to('riddhi@matrixbricks.com')
                         ->cc(['shweta@matrixbricks.com'])
-                        ->subject('New Contact Us Submission');
+                        ->subject('New Contact Form Submission');
             });
 
         } catch (\Exception $e) {

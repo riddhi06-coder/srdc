@@ -106,84 +106,85 @@
     @endif
 
     
+    @php
+        // Decode the 'products' JSON field from the first (and only) solutions item
+        $products = isset($solutions[0]) && isset($solutions[0]->products)
+            ? json_decode($solutions[0]->products, true)
+            : [];
+
+        $total = count($products);
+        $half = ceil($total / 2);
+        $leftApps = array_slice($products, 0, $half);
+        $rightApps = array_slice($products, $half);
+    @endphp
+
     <section class="applications-wrap">
         <div class="container">
-            @foreach($solutions as $solution) <!-- Loop through each solution -->
-                <div class="heading heading-center">
-                    <h2>{{ $solution->title }}</h2> <!-- Access title for each solution -->
-                    <div class="heading-divider"></div>
-                </div>
+            <div class="heading heading-center">
+            <h2>{{ $solutions[0]->title ?? 'Solutions' }}</h2>
+            <div class="heading-divider"></div>
+            </div>
+            <div class="row applications-flex-row">
 
-                <div class="row applications-flex-row">
-                    <!-- Left Column for first 6 product-image pairs -->
-                    <div class="col-xl-6 col-lg-6">
-                        @foreach(array_slice(json_decode($solution->products), 0, 6) as $product) <!-- First 6 products -->
-                            <div class="service-card style2" data-aos="fade-up" data-aos-duration="1000">
-                                <div class="icon-box">
-                                    <div class="icon">
-                                        <img src="{{ asset('/uploads/home/' . $product->image) }}" alt="icon">
-                                    </div>
-                                    <div class="line-shape">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 32" fill="none">
-                                            <path
-                                                d="M0 0.5H143.551C144.498 0.5 145.425 0.768609 146.224 1.27461L192.776 30.7254C193.575 31.2314 194.502 31.5 195.449 31.5H294"
-                                                stroke="#b4b4b4">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <h3><a href="#">{{ $product->name }}</a></h3>
-                                    <p>The industry &amp; factory and the category encompasses</p>
-                                </div>
-                                <div class="btn-wrapper">
-                                    <a class="gt-btn style6 gt-btn-icon-2" href="#">Read More</a>
-                                </div>
-                            </div>
-                        @endforeach
+            <!-- Left Column -->
+            <div class="col-xl-3 col-lg-3">
+                @foreach($leftApps as $item)
+                <div class="service-card style2" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="icon-box">
+                    <div class="icon">
+                        <img src="{{ asset('/uploads/home/' . $item['image']) }}" alt="icon">
                     </div>
-
-                    <!-- Center Column for the Solution Image -->
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="thumb">
-                            <img src="{{ asset('/uploads/home/' . $solution->image) }}" alt="thumb"> <!-- Access image for each solution -->
-                        </div>
+                    <div class="line-shape">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 32" fill="none">
+                        <path d="M0 0.5H143.551C144.498 0.5 145.425 0.768609 146.224 1.27461L192.776 30.7254C193.575 31.2314 194.502 31.5 195.449 31.5H294" stroke="#b4b4b4"/>
+                        </svg>
                     </div>
-
-                    <!-- Right Column for the next 6 product-image pairs -->
-                    <div class="col-xl-6 col-lg-6">
-                        @foreach(array_slice(json_decode($solution->products), 6, 6) as $product) <!-- Next 6 products -->
-                            <div class="service-card style2" data-aos="fade-up" data-aos-duration="1000">
-                                <div class="icon-box">
-                                    <div class="line-shape">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 32" fill="none">
-                                            <path
-                                                d="M0 0.5H143.551C144.498 0.5 145.425 0.768609 146.224 1.27461L192.776 30.7254C193.575 31.2314 194.502 31.5 195.449 31.5H294"
-                                                stroke="#b4b4b4">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                    <div class="icon">
-                                        <img src="{{ asset('/uploads/home/' . $product->image) }}" alt="icon">
-                                    </div>
-                                </div>
-                                
-                                <div class="content">
-                                    <h3><a href="#">{{ $product->name }}</a></h3>
-                                </div>
-                            </div>
-                        @endforeach
+                    </div>
+                    <div class="content">
+                    <h3>{{ $item['name'] }}</h3>
                     </div>
                 </div>
+                @endforeach
+            </div>
 
+            <!-- Center Image -->
+            <div class="col-xl-6 col-lg-6">
+                <div class="thumb">
+                    <img src="{{ asset('/uploads/home/' . $solutions[0]['image']) }}" alt="thumb">
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="col-xl-3 col-lg-3">
+                @foreach($rightApps as $item)
+                <div class="service-card style2 right-side" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="icon-box">
+                    <div class="icon">
+                        <img src="{{ asset('/uploads/home/' . $item['image']) }}" alt="icon">
+                    </div>
+                    <div class="right-line-shape">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="290" height="27" viewBox="0 0 290 27" fill="none">
+                        <path d="M290 1.00005L146.458 1.00006C145.506 1.00006 144.573 1.27201 143.77 1.78392L106.23 25.7162C105.427 26.2281 104.494 26.5 103.542 26.5L0 26.5" stroke="#b4b4b4"/>
+                        </svg>
+                    </div>
+                    </div>
+                    <div class="content">
+                    <h3>{{ $item['name'] }}</h3>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+            </div>
+            @foreach($solutions as $solution)
                 <!-- Access the description of the current solution inside the loop -->
                 <div class="row">
                     <div class="col-xl-12 col-lg-12 applications-text">
                         <p>{!! $solution->description !!}</p> <!-- Display description for the current solution -->
                     </div>
                 </div>
+            @endforeach
 
-            @endforeach <!-- End of the solutions loop -->
         </div>
     </section>
 
@@ -380,7 +381,6 @@
                                 
                                 <div class="col-12 text-center">
                                     <button type="submit" class="gt-btn style1">Submit <i class="fa fa-angle-right"></i></button>
-                                    {{-- <a class="gt-btn style1" href="#">Submit <i class="fa fa-angle-right"></i></a> --}}
                                 </div>
                             </div>
                         </form>

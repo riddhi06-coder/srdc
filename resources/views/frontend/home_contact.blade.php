@@ -6,22 +6,17 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
     {{-- SEO --}}
     <meta name="description" content="SRDC - Sara Research & Development Center">
     <meta name="keywords" content="SRDC, Sara Research, Matrix Bricks">
     <meta name="author" content="SRDC">
     <meta name="robots" content="index, follow">
-
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <!-- Responsive Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>SRDC | New Contact Enquiry Details</title>
 
     <!-- Google Font -->
@@ -96,7 +91,7 @@
                     <tr>
                         <td style="text-align:center;">
                             <p style="font-size:16px; color:#555; line-height:18px; margin:0;">
-                                &copy; 2025 SRDC. All rights reserved. Designed By <a href="https://www.matrixbricks.com" target="_blank" style="color:#000;">Matrix Bricks</a>
+                                &copy; 2025 SRDC. All rights reserved.
                             </p>
                         </td>
                     </tr>
