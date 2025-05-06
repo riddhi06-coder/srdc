@@ -263,6 +263,8 @@
     @include('components.frontend.footer')
         
     @include('components.frontend.main-js')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://7oroof.com/demos/chemlabs/assets/js/plugins.js"></script>
         
                     
 </body>
