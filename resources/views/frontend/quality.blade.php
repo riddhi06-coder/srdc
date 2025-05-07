@@ -20,7 +20,7 @@
       <div class="container">
         <ul class="list-unstyled">
           <li><a href="index.html">Home</a></li>
-          <!-- <li>About </li> -->
+          <li>About Us</li>
           <li>{{ $quality->heading }}</li>
         </ul>
       </div>

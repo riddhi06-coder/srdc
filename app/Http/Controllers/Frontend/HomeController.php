@@ -166,6 +166,12 @@ class HomeController extends Controller
                         ->subject('New Contact Form Submission');
             });
 
+            // Confirmation email to user (generalized)
+            Mail::send('frontend.contact_mail_confirmation', [], function ($message) use ($data) {
+                $message->to($data['email'])
+                        ->subject('Thanks for Reaching Out!');
+            });
+
         } catch (\Exception $e) {
             return back()->with('error', 'There was an error sending your message.');
         }

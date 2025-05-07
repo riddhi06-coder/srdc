@@ -60,7 +60,7 @@
 
                                         <!-- Image Upload -->
                                         <div class="col-md-6">
-                                            <label class="form-label" for="banner_image">Background Image <span class="txt-danger">*</span></label>
+                                            <label class="form-label" for="banner_image">Banner Image <span class="txt-danger">*</span></label>
                                             <input class="form-control" id="banner_image" type="file" name="banner_image" accept=".jpg, .jpeg, .png, .webp" required onchange="previewBannerImage()">
                                             <div class="invalid-feedback">Please upload an image.</div>
                                             <small class="text-secondary"><b>Note: The file size should be less than 2MB.</b></small>
@@ -110,7 +110,7 @@
                                             <small class="text-secondary"><b>Only .jpg, .jpeg, .png, .webp formats are allowed.</b></small>
 
                                             <!-- Preview Section -->
-                                            <div id="VisionImagePreviewContainer" style="display: none; margin-top: 10px;">
+                                            <div id="VisionImagePreviewContainer" style="display: none; margin-top: 10px; background-color: black !important;">
                                                 <img id="vision_image_preview" src="" alt="Preview" class="img-fluid" style="max-height: 200px; border: 1px solid #ddd; padding: 5px;">
                                             </div>
                                         </div>

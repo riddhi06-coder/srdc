@@ -19,13 +19,13 @@
     <section class="breadcrumb-section">
       <div class="breadcrumb-bg background-image" style="background-image: url({{ asset('frontend/assets/images/bg/breadcrumb-bg.png') }});">
         <div class="breadcrumb-text text-center">
-          <h1 class="breadcrumb-title">Contact</h1>
+          <h1 class="breadcrumb-title">Contact Us</h1>
         </div>
       </div>
       <div class="container">
         <ul class="list-unstyled">
             <li><a href="{{ route('home.page') }}">Home</a></li>
-          <li>Contact</li>
+          <li>Contact Us</li>
         </ul>
       </div>
     </section>

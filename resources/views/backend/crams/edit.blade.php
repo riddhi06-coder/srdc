@@ -61,7 +61,7 @@
 
                                         <!-- Image Upload -->
                                         <div class="col-md-6">
-                                            <label class="form-label" for="banner_image">Background Image <span class="txt-danger">*</span></label>
+                                            <label class="form-label" for="banner_image">Banner Image <span class="txt-danger">*</span></label>
                                             <input class="form-control" id="banner_image" type="file" name="banner_image" accept=".jpg, .jpeg, .png, .webp" required onchange="previewBannerImage()">
                                             <div class="invalid-feedback">Please upload an image.</div>
                                             <small class="text-secondary"><b>Note: The file size should be less than 2MB.</b></small>
@@ -120,7 +120,7 @@
                                             <small class="text-secondary"><b>Only .jpg, .jpeg, .png, .webp formats are allowed.</b></small>
 
                                            <!-- Preview Section -->
-                                           <div id="VisionImagePreviewContainer" style="margin-top: 10px; {{ $details->vision_image ? '' : 'display: none;' }}">
+                                           <div id="VisionImagePreviewContainer" style="margin-top: 10px; background-color: black !important; {{ $details->vision_image ? '' : 'display: none;' }}">
                                                 <img 
                                                     id="vision_image_preview" 
                                                     src="{{ $details->vision_image ? asset('uploads/crams/' . $details->vision_image) : '' }}" 

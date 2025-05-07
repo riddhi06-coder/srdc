@@ -35,11 +35,11 @@ class ContactUsController extends Controller
             'company'      => 'required|string|max:255',
             'designation'  => 'required|string|max:255',
             'email'        => 'required|email:rfc,dns',
-            'phone'        => 'required|digits:10',
-            'website'      => 'required|url|max:255',
+            'phone'        => ['required', 'regex:/^\d{10,15}$/'],
+            'website'      => 'required|max:255',
             'address'      => 'required|string|max:255',
-            'city'         => 'required|string|max:100',
-            'state'        => 'required|string|max:100',
+            'city'         => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'state'        => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'postal'       => 'required|alpha_num|max:20',
             'country'      => 'required|string|in:Afghanistan,Albania,Algeria,American Samoa,Andorra,Angola,Anguilla,Antarctica,Antigua and Barbuda,Argentina,Armenia,Aruba,Australia,Austria,Iceland,India,Indonesia',
             'interest'     => 'required|string|in:Purchase,Sales,Consultation,Others',
@@ -68,7 +68,7 @@ class ContactUsController extends Controller
             'email.email'          => 'Please enter a valid email address.',
             
             'phone.required'       => 'Phone number is required.',
-            'phone.digits'         => 'Phone number must be exactly 10 digits.',
+            'phone.regex'          => 'Phone number must be between 10 to 15 digits.',           
             
             'website.required'     => 'Website is required.',
             'website.url'          => 'Please enter a valid website URL (starting with http:// or https://).',
@@ -81,10 +81,12 @@ class ContactUsController extends Controller
             'city.required'        => 'City is required.',
             'city.string'          => 'City must be a string.',
             'city.max'             => 'City cannot be more than 100 characters.',
-            
+            'city.regex'           => 'City can only contain letters and spaces.',
+
             'state.required'       => 'State/Province is required.',
             'state.string'         => 'State/Province must be a string.',
             'state.max'            => 'State/Province cannot be more than 100 characters.',
+            'state.regex'          => 'State/Province can only contain letters and spaces.',
             
             'postal.required'      => 'ZIP / Postal Code is required.',
             'postal.alpha_num'     => 'Postal code must contain only letters and numbers.',
@@ -122,7 +124,13 @@ class ContactUsController extends Controller
         Mail::send('frontend.contact_mail_send', $data, function ($message) use ($data) {
             $message->to('riddhi@matrixbricks.com')
                     ->cc(['shweta@matrixbricks.com'])
-                    ->subject('New Contact Enquiry');
+                    ->subject('New Contact Form Enquiry');
+        });
+
+        // Confirmation email to user (generalized)
+        Mail::send('frontend.contact_mail_confirmation', [], function ($message) use ($data) {
+            $message->to($data['email'])
+                    ->subject('Thanks for Reaching Out!');
         });
 
         return redirect()->route('thankyou')->with('success', 'Your message has been sent successfully.');

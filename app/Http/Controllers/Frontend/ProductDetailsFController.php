@@ -50,8 +50,6 @@ class ProductDetailsFController extends Controller
 
     public function sendProductEnquiry(Request $request)
     {
-        // Log the start of the method
-        Log::info('Product enquiry request received.', ['request_data' => $request->all()]);
     
         $request->validate([
             'first_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
@@ -82,18 +80,20 @@ class ProductDetailsFController extends Controller
             'product_name' => $request->product_name,
         ];
     
-        Log::info('Validated product enquiry data.', $data);
-    
         try {
             Mail::send('frontend.product_enquiry_mail', $data, function ($message) use ($data) {
                 $message->to('riddhi@matrixbricks.com')
                         ->cc(['shweta@matrixbricks.com'])
                         ->subject('New Product Enquiry - ' . $data['product_name']);
             });
+
+            // Confirmation email to user (generalized)
+            Mail::send('frontend.contact_mail_confirmation', [], function ($message) use ($data) {
+                $message->to($data['email'])
+                        ->subject('Thanks for Reaching Out!');
+            });
     
-            Log::info('Product enquiry email sent successfully.');
         } catch (\Exception $e) {
-            Log::error('Error sending product enquiry email.', ['error' => $e->getMessage()]);
             return back()->with('error', 'There was an error sending your enquiry.');
         }
     

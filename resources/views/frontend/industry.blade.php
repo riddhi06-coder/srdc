@@ -35,7 +35,7 @@
                 <div class="product_item">
                     <img src="{{ asset('frontend/assets/images/icons/product.png') }}" class="product-icon">
                     <div class="product_title">
-                    <h4><a href="#">{{ $product->product_name }}</a></h4>
+                    <h4><a href="{{ route('product.details', $product->slug) }}">{{ $product->product_name }}</a></h4>
                     </div>
                     <div class="product_brand_details">
                     <div class="product_link">

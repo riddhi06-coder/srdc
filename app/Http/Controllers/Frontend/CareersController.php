@@ -34,7 +34,7 @@ class CareersController extends Controller
             'first_name'    => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'last_name'     => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'email'         => 'required|email:rfc,dns',
-            'phone'         => 'required|digits:10',
+            'phone'         => ['required', 'regex:/^\d{10,15}$/'],
             'document_src'  => 'required|file|mimes:pdf,doc,docx|max:2048',
             'user_message'  => 'required|string|max:1000',
             'job_role'      => 'nullable|string|max:255',
@@ -44,7 +44,7 @@ class CareersController extends Controller
             'email.required'         => 'Email is required.',
             'email.email'            => 'Enter a valid email address.',
             'phone.required'         => 'Phone number is required.',
-            'phone.digits'           => 'Phone number must be exactly 10 digits.',
+            'phone.regex'            => 'Phone number must be between 10 to 15 digits.',
             'document_src.required'  => 'Please upload your resume.',
             'document_src.mimes'     => 'Resume must be a file of type: pdf, doc, docx.',
             'document_src.max'       => 'Resume file size must not exceed 2MB.',
@@ -68,12 +68,21 @@ class CareersController extends Controller
         Mail::send('frontend.job_mail_send', $data, function ($message) use ($data, $resume, $resumeName) {
             $message->to('riddhi@matrixbricks.com')
                     ->cc(['shweta@matrixbricks.com'])
-                    ->subject('New Job Application: ' . $data['first_name'] . ' ' . $data['last_name'])
+                    ->subject('New Job Application')
                     ->attach($resume->getRealPath(), [
                         'as'   => $resumeName,
                         'mime' => $resume->getClientMimeType(),
                     ]);
         });
+
+
+        // Confirmation email to user (generalized)
+        Mail::send('frontend.job_mail_confirmation', [], function ($message) use ($data) {
+            $message->to($data['email'])
+                    ->subject('Application Received - SRDC');
+        });
+
+
     
         return redirect()->route('thankyou')->with('success', 'Your application has been submitted successfully.');
     }
@@ -84,7 +93,7 @@ class CareersController extends Controller
             'c_first_name'     => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'c_last_name'      => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'c_email'          => 'required|email',
-            'c_phone'          => 'required|digits:10',
+            'c_phone'          => ['required', 'regex:/^\d{10,15}$/'],
             'c_document_src'   => 'required|file|mimes:pdf|max:2048',
             'c_message'        => 'required|string|max:1000',
         ], [
@@ -100,7 +109,7 @@ class CareersController extends Controller
             'c_email.email'           => 'Please enter a valid email address.',
             
             'c_phone.required'        => 'Phone number is required. Please enter your phone number.',
-            'c_phone.digits'          => 'Phone number must be exactly 10 digits.',
+            'c_phone.regex'           => 'Phone number must be between 10 to 15 digits.',
             
             'c_document_src.required' => 'Please upload your resume in PDF format.',
             'c_document_src.file'     => 'The file uploaded must be a valid document.',
@@ -129,12 +138,19 @@ class CareersController extends Controller
         Mail::send('frontend.career_mail_send', $data, function ($message) use ($data, $resume, $resumeName) {
             $message->to('riddhi@matrixbricks.com')
                     ->cc(['shweta@matrixbricks.com'])
-                    ->subject('New Contact Career Submission: ' . $data['first_name'] . ' ' . $data['last_name'])
+                    ->subject('New Contact Career Submission')
                     ->attach($resume->getRealPath(), [
                         'as'   => $resumeName,
                         'mime' => $resume->getClientMimeType(),
                     ]);
         });
+        
+        // Confirmation email to user (generalized)
+        Mail::send('frontend.job_mail_confirmation', [], function ($message) use ($data) {
+            $message->to($data['email'])
+                    ->subject('Application Received - SRDC');
+        });
+
 
         return redirect()->route('thankyou')->with('success', 'Your application has been submitted successfully.');
     }

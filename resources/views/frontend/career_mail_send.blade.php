@@ -3,7 +3,7 @@
         <img src="{{ asset('frontend/assets/images/home/logo.webp') }}" alt="SRDC Logo" title="SRDC Logo" style="width: 220px; height: auto;">
     </div>
 
-    <h2 style="text-align: center; color: #2c3e50;">New Career Application Received</h2>
+    <h2 style="text-align: center; color: #2c3e50;">New Career Form Enquiry</h2>
 
     <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
         <tr>
