@@ -71,11 +71,14 @@
                         </a>
                     </div>
                 @endif -->
-                <div class="enquiry-btn">
-                    <a class="gt-btn style1" href="#" id="openModal">
-                        Download <i class="fa fa-angle-right"></i>
-                    </a>
-                </div>
+
+                @if(!empty($details->document))
+                  <div class="enquiry-btn">
+                      <a class="gt-btn style1" href="#" id="openModal">
+                          Download <i class="fa fa-angle-right"></i>
+                      </a>
+                  </div>
+                @endif
 
             </div>
 
