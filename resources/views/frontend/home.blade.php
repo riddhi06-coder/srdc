@@ -358,7 +358,7 @@
                                 <div class="col-xl-12 col-md-12">
                                     <div class="form-group">
                                         <textarea class="form-control @error('user_message') is-invalid @enderror" id="user_message" name="user_message" cols="20" rows="3" placeholder="Message*" value="{{ old('user_message') }}">{{ old('user_message') }}</textarea>
-                                        @error('message')
+                                        @error('user_message')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>

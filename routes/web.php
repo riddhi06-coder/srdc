@@ -125,6 +125,9 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
     Route::get('/thank-you', [HomeController::class, 'thankyou'])->name('thankyou');
 
     Route::post('/product-enquiry', [ProductDetailsFController::class, 'sendProductEnquiry'])->name('product.enquiry');
+    Route::post('/request-otp', [ProductDetailsFController::class, 'requestOtp'])->name('otp.request');
+    Route::post('/verify-otp', [ProductDetailsFController::class, 'verifyOtp'])->name('otp.verify');
+    Route::get('/download-document', [ProductDetailsFController::class, 'downloadDocument'])->name('document.download');
 
     Route::get('/product-by-industries/{slug}', [HomeController::class, 'product_industries'])->name('product.industries');
     Route::get('/product-details/{slug}', [ProductDetailsFController::class, 'product_details'])->name('product.details');

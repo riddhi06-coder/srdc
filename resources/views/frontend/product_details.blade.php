@@ -10,6 +10,12 @@
             width: 100%;
             z-index: 1;
         }
+
+        .invalid-feedback{
+            color: rgb(230, 23, 23);
+            font-size: 14px;
+        }
+      
     </style>
 
 </head>
@@ -50,23 +56,28 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-          <div class="pro-img">
-              @if(!empty($details->images))
-                  <div class="pro-img">
-                      <img src="{{ asset('uploads/speciality_chemicals/' . $details->images) }}" class="img-responsive">
-                  </div>
-              @endif
+            <div class="pro-img">
+                @if(!empty($details->images))
+                    <div class="pro-img">
+                        <img src="{{ asset('uploads/speciality_chemicals/' . $details->images) }}" class="img-responsive">
+                    </div>
+                @endif
+                
+                <!-- Check if the document is not empty -->
+                <!-- @if(!empty($details->document))
+                    <div class="enquiry-btn">
+                        <a class="gt-btn style1" href="{{ asset('/uploads/speciality_chemicals/documents/' . $details->document) }}" download>
+                            Download <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                @endif -->
+                <div class="enquiry-btn">
+                    <a class="gt-btn style1" href="#" id="openModal">
+                        Download <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
 
-              
-              <!-- Check if the document is not empty -->
-              @if(!empty($details->document))
-                  <div class="enquiry-btn">
-                      <a class="gt-btn style1" href="{{ asset('/uploads/speciality_chemicals/documents/' . $details->document) }}" download>
-                          Download <i class="fa fa-angle-right"></i>
-                      </a>
-                  </div>
-              @endif
-          </div>
+            </div>
 
           </div>
           <div class="col-lg-9 col-md-9 col-sm-9 col-xs-6">
@@ -155,7 +166,7 @@
             <h4 class="modal-title">Enquire Now</h4>
           </div>
           <div class="modal-body">
-            <form action="{{ route('product.enquiry') }}" method="post" class="careers-form" id="contactForm">
+            <form action="{{ route('product.enquiry') }}" method="POST" class="careers-form" id="contactForm">
               @csrf
                 <div class="row gx-2">
                   <!-- Hidden Product Name Field -->
@@ -164,7 +175,7 @@
                   <!-- First Name -->
                   <div class="col-xl-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                      <input type="text" id="first_name" class="form-control" id="first_name" name="first_name" placeholder="First Name" value="{{ old('f_name') }}">
+                      <input type="text" id="first_name" class="form-control" id="first_name" name="first_name" placeholder="First Name*" value="{{ old('f_name') }}">
                     </div>
                     @error('first_name')
                         <span class="invalid-feedback" role="alert">
@@ -175,7 +186,7 @@
                   <!-- Last Name -->
                   <div class="col-xl-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                      <input type="text" id="last_name" class="form-control" id="last_name" name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
+                      <input type="text" id="last_name" class="form-control" id="last_name" name="last_name" placeholder="Last Name*" value="{{ old('last_name') }}">
                       @error('last_name')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -186,7 +197,7 @@
                   <!-- Email -->
                   <div class="col-xl-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                      <input type="email" id="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                      <input type="email" id="email" class="form-control" id="email" name="email" placeholder="Email*" value="{{ old('email') }}">
                       @error('email')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -197,7 +208,7 @@
                   <!-- Phone -->
                   <div class="col-xl-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                      <input type="text" id="phone" maxlength="10" class="form-control" id="phone" name="phone" placeholder="Phone" value="{{ old('phone') }}">
+                      <input type="text" id="phone" maxlength="10" class="form-control" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
                       @error('phone')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
@@ -208,8 +219,8 @@
                   <!-- Message -->
                   <div class="col-xl-12 col-md-12">
                     <div class="form-group">
-                      <textarea class="form-control" name="message" id="message" cols="20" rows="3" placeholder="Message">{{ old('message') }}</textarea>
-                      @error('message')
+                      <textarea class="form-control" name="user_message" id="user_message" cols="20" rows="3" placeholder="Message*">{{ old('user_message') }}</textarea>
+                      @error('user_message')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>
                           </span>
@@ -229,9 +240,152 @@
     </div>
 
 
+
+    <div id="mydocModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Enquire Now</h4>
+          </div>
+          <div class="modal-body">
+            <form action="{{ route('product.enquiry') }}" method="POST" class="careers-form" id="enquiryForm">
+              @csrf
+                <div class="row gx-2">
+                  <!-- Hidden Product Name Field -->
+                  <input type="hidden" name="product_name" value="{{ $details->product->product_name }}">
+
+                  <!-- ✅ Hidden Document Field -->
+                  <input type="hidden" name="document" id="document" value="{{ $details->document }}">
+
+
+                  <!-- Email -->
+                  <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <input type="email" id="enquiry_email" class="form-control" id="enquiry_email" name="enquiry_email" placeholder="Email*" value="{{ old('enquiry_email') }}">
+                      @error('enquiry_email')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+
+
+                  <!-- Phone -->
+                  <div class="col-xl-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" id="enaquiry_phone" maxlength="10" class="form-control" id="enaquiry_phone" name="enaquiry_phone" placeholder="Phone*" value="{{ old('enaquiry_phone') }}">
+                      @error('enaquiry_phone')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                      @enderror
+                    </div>
+                  </div>
+
+                
+                  <!-- Submit Button -->
+                  <div class="col-12 text-center">
+                    <button type="submit" class="gt-btn style1">Submit <i class="fa fa-angle-right"></i></button>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
     @include('components.frontend.footer')
         
     @include('components.frontend.main-js')
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+          $('#openModal').click(function(e) {
+            e.preventDefault(); // Prevent default link behavior
+            $('#mydocModal').modal('show'); // Show the modal directly
+          });
+        });
+    </script>
+
+
+    <script>
+        $(document).ready(function () {
+
+          $('#enquiryForm').on('submit', function (e) {
+              e.preventDefault();
+              let form = $(this);
+              let documentName = form.data('document'); // Get document name
+
+              $.ajax({
+                  url: '{{ route("otp.request") }}',
+                  type: 'POST',
+                  data: form.serialize(),
+                  headers: {
+                      'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                  },
+                  success: function (response) {
+                      alert(response.message);
+                      form.after(`
+                          <div class="form-group mt-3" id="otp-section" data-document="${documentName}">
+                              <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
+                              <button type="button" id="verifyOtpBtn" class="gt-btn style1 mt-2">Verify OTP</button>
+                          </div>
+                      `);
+                  },
+                  error: function (xhr) {
+                      alert(xhr.responseJSON.message || 'Something went wrong.');
+                  }
+              });
+          });
+
+          $(document).on('click', '#verifyOtpBtn', function () {
+              let otp = $('#otp').val();
+              let email = $('#enquiry_email').val();
+              let phone = $('#enaquiry_phone').val();
+              let document = $('#document').val(); 
+
+              $.ajax({
+                  url: '{{ route("otp.verify") }}',
+                  type: 'POST',
+                  data: {
+                      otp: otp,
+                      email: email,
+                      phone: phone,
+                      document: document,
+                      _token: '{{ csrf_token() }}'
+                  },
+                  success: function (response) {
+                      alert(response.message);
+
+                      if (response.download_route) {
+                          window.location.href = response.download_route;
+
+                          $('#enquiryForm')[0].reset();       
+                          $('#otp-section').remove();        
+                          $('#mydocModal').modal('hide'); 
+                      }
+                  },
+                  error: function (xhr) {
+                      alert(xhr.responseJSON.message || 'Invalid OTP.');
+                  }
+              });
+          });
+
+        });
+    </script>
+
         
                     
 </body>

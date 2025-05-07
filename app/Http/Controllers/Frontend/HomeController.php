@@ -128,22 +128,26 @@ class HomeController extends Controller
     public function sendContact(Request $request)
     {
         $request->validate([
-            'f_name' => 'required|string|max:255',
-            'l_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:20',
+            'f_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'l_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'email' => 'required|email:rfc,dns|max:255',
+            'phone' => ['required', 'digits:10'],
             'service' => 'required|string|max:255',
             'country' => 'required|string|max:255',
             'user_message' => 'required|string|max:1000',
         ], [
             'f_name.required' => 'First name is required',
+            'f_name.regex' => 'First name should not contain numbers or special characters',
             'l_name.required' => 'Last name is required',
+            'l_name.regex' => 'Last name should not contain numbers or special characters',
             'email.required' => 'Email is required',
+            'email.email' => 'Email must be a valid format',
             'phone.required' => 'Phone is required',
+            'phone.digits' => 'Phone must be exactly 10 digits',
             'service.required' => 'Service is required',
             'country.required' => 'Country is required',
             'user_message.required' => 'Message is required',
-        ]);
+        ]);        
 
         $data = [
             'f_name' => $request->f_name,
