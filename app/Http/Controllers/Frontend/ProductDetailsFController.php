@@ -126,11 +126,10 @@ class ProductDetailsFController extends Controller
                 ]
             );
     
-            // Uncomment the line below to send OTP via email
-            // Mail::send('frontend.otp_mail', ['otp' => $otp], function ($message) use ($request) {
-            //     $message->to($request->enquiry_email)
-            //             ->subject('OTP for Brochure Download');
-            // });
+            Mail::send('frontend.otp_mail', ['otp' => $otp], function ($message) use ($request) {
+                $message->to($request->enquiry_email)
+                        ->subject('OTP for Brochure Download');
+            });
     
             return response()->json(['message' => 'OTP sent to your email.']);
         } catch (\Exception $e) {
