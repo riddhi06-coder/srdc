@@ -120,8 +120,11 @@ Route::group(['prefix'=> '', 'middleware'=>[\App\Http\Middleware\PreventBackHist
     Route::get('/privacy_policy', [HomeController::class, 'privacy'])->name('privacy.policy');
     Route::get('/terms_conditions', [HomeController::class, 'terms'])->name('terms.conditions');
     Route::get('/contact-us', [ContactUsController::class, 'contact'])->name('contact.us');
+    Route::post('/send-contact-mail', [ContactUsController::class, 'contact_mail'])->name('contact.mail');
 
     Route::get('/careers', [CareersController::class, 'careers'])->name('careers.us');
+    Route::post('/send-job-mail', [CareersController::class, 'job_mail'])->name('job.mail');
+    Route::post('/send-career-mail', [CareersController::class, 'career_mail'])->name('career.mail');
     Route::get('/thank-you', [HomeController::class, 'thankyou'])->name('thankyou');
 
     Route::post('/product-enquiry', [ProductDetailsFController::class, 'sendProductEnquiry'])->name('product.enquiry');
