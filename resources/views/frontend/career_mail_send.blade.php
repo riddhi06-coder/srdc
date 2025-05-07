@@ -19,10 +19,6 @@
             <td>{{ $phone }}</td>
         </tr>
         <tr>
-            <td style="padding: 8px 0;"><strong>Job Role:</strong></td>
-            <td>{{ $job_role ?? 'Not specified' }}</td>
-        </tr>
-        <tr>
             <td style="padding: 8px 0; vertical-align: top;"><strong>Candidate Message:</strong></td>
             <td style="white-space: pre-wrap;">{{ e($user_message) }}</td>
         </tr>
