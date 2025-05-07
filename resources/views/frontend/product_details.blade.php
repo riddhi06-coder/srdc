@@ -363,6 +363,7 @@
               let phone = $('#enaquiry_phone').val();
               let document = $('#document').val(); 
 
+
               $.ajax({
                   url: '{{ route("otp.verify") }}',
                   type: 'POST',
@@ -385,7 +386,42 @@
                       }
                   },
                   error: function (xhr) {
-                      alert(xhr.responseJSON.message || 'Invalid OTP.');
+                let message = xhr.responseJSON.message || 'Invalid OTP.';
+                alert(message);
+
+                if (xhr.status === 410) {
+                    $('#verifyOtpBtn').replaceWith(`
+                        <button type="button" id="resendOtpBtn" class="gt-btn style1 mt-2" style="display: block; margin: 15px auto;">Resend OTP</button>
+                    `);
+                }
+            }
+
+              });
+          });
+
+          $(document).on('click', '#resendOtpBtn', function () {
+              let email = $('#enquiry_email').val();
+              let phone = $('#enaquiry_phone').val();
+              let documentName = $('#document').val(); 
+
+              $.ajax({
+                  url: '{{ route("otp.request") }}',
+                  type: 'POST',
+                  data: {
+                      enquiry_email: email,
+                      enaquiry_phone: phone,
+                      product_name: documentName,
+                      _token: '{{ csrf_token() }}'
+                  },
+                  success: function (response) {
+                      alert('OTP resent successfully.');
+                      $('#resendOtpBtn').replaceWith(`
+                          <button type="button" id="verifyOtpBtn" class="gt-btn style1 mt-2" style="display: block; margin: 15px auto;">Verify OTP</button>
+                      `);
+                      $('#otp').val('');
+                  },
+                  error: function (xhr) {
+                      alert(xhr.responseJSON.message || 'Failed to resend OTP. Please try again.');
                   }
               });
           });

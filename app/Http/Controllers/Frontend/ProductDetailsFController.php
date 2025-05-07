@@ -127,10 +127,10 @@ class ProductDetailsFController extends Controller
             );
     
             // Uncomment the line below to send OTP via email
-            Mail::send('frontend.otp_mail', ['otp' => $otp], function ($message) use ($request) {
-                $message->to($request->enquiry_email)
-                        ->subject('OTP for Brochure Download');
-            });
+            // Mail::send('frontend.otp_mail', ['otp' => $otp], function ($message) use ($request) {
+            //     $message->to($request->enquiry_email)
+            //             ->subject('OTP for Brochure Download');
+            // });
     
             return response()->json(['message' => 'OTP sent to your email.']);
         } catch (\Exception $e) {
@@ -138,7 +138,7 @@ class ProductDetailsFController extends Controller
         }
     }
     
-    
+
     public function verifyOtp(Request $request)
     {
         try {
@@ -155,9 +155,15 @@ class ProductDetailsFController extends Controller
                         ->latest('created_at')
                         ->first();
 
-            if (!$otpRecord) {
-                return response()->json(['message' => 'Invalid OTP or OTP expired.'], 422);
+
+            if (!$otpRecord || $otpRecord->expires_at < Carbon::now()) {
+                return response()->json(['message' => 'OTP expired. Please request a new one.'], 410);
             }
+        
+            if ($otpRecord->otp !== $request->otp) {
+                return response()->json(['message' => 'Invalid OTP entered. Please try again.'], 422);
+            }
+
 
             $otpRecord->is_verified = 1;
             $otpRecord->save();
@@ -167,8 +173,7 @@ class ProductDetailsFController extends Controller
                 'download_route' => route('document.download', [
                 'email' => $request->email,
                 'phone' => $request->phone,
-                'document' => $request->document
-                    
+                'document' => $request->document  
 
                 ])
             ]);
