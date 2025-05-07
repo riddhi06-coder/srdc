@@ -39,7 +39,9 @@
                     </div>
                     <div class="product_brand_details">
                     <div class="product_link">
-                        <a href="#">Know More <i class="fa fa-angle-right"></i></a>
+                        <a href="{{ route('product.details', $product->slug) }}">
+                            Know More <i class="fa fa-angle-right"></i>
+                        </a>
                     </div>
                     </div>
                 </div>
