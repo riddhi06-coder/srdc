@@ -303,7 +303,7 @@
                                 </div>
                                 <div class="col-xl-6 col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control @error('phone') is-invalid @enderror" maxlength="10" type="text" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
+                                        <input class="form-control @error('phone') is-invalid @enderror" maxlength="15" type="text" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

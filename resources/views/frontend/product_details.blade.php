@@ -175,7 +175,7 @@
                   <!-- First Name -->
                   <div class="col-xl-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                      <input type="text" id="first_name" class="form-control" id="first_name" name="first_name" placeholder="First Name*" value="{{ old('f_name') }}">
+                      <input type="text" id="first_name" class="form-control" id="first_name" name="first_name" placeholder="First Name*" value="{{ old('first_name') }}">
                     </div>
                     @error('first_name')
                         <span class="invalid-feedback" role="alert">
@@ -208,7 +208,7 @@
                   <!-- Phone -->
                   <div class="col-xl-6 col-md-6 col-sm-6">
                     <div class="form-group">
-                      <input type="text" id="phone" maxlength="10" class="form-control" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
+                      <input type="text" id="phone" maxlength="15" class="form-control" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
                       @error('phone')
                           <span class="invalid-feedback" role="alert">
                               <strong>{{ $message }}</strong>

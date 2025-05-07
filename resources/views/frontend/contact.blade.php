@@ -102,7 +102,7 @@
                       <!-- Phone -->
                       <div class="col-xl-4 col-md-4 col-sm-4">
                         <div class="form-group">
-                          <input type="text" id="phone" maxlength="10" class="form-control" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
+                          <input type="text" id="phone" maxlength="15" class="form-control" id="phone" name="phone" placeholder="Phone*" value="{{ old('phone') }}">
                           @error('phone')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
