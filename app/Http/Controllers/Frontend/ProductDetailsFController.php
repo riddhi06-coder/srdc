@@ -55,7 +55,7 @@ class ProductDetailsFController extends Controller
             'first_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'last_name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'email' => 'required|email:rfc,dns|max:255',
-            'phone' => ['required', 'digits:10'],
+            'phone' => ['required', 'regex:/^\d{10,15}$/'],
             'user_message' => 'required|string|max:1000',
             'product_name' => 'required|string|max:255',
         ], [
@@ -66,7 +66,7 @@ class ProductDetailsFController extends Controller
             'email.required' => 'Email is required',
             'email.email' => 'Email must be a valid format',
             'phone.required' => 'Phone is required',
-            'phone.digits' => 'Phone must be exactly 10 digits',
+            'phone.regex'  => 'Phone number must be between 10 to 15 digits.', 
             'user_message.required' => 'Message is required',
             'product_name.required' => 'Product name is missing',
         ]);
