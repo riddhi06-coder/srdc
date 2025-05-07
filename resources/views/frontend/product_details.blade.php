@@ -248,8 +248,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Enquire Now</h4>
+            <h4 class="modal-title">Download Brochure</h4>
           </div>
+          
           <div class="modal-body">
             <form action="{{ route('product.enquiry') }}" method="POST" class="careers-form" id="enquiryForm">
               @csrf
@@ -326,7 +327,7 @@
           $('#enquiryForm').on('submit', function (e) {
               e.preventDefault();
               let form = $(this);
-              let documentName = form.data('document'); // Get document name
+              let documentName = form.data('document'); 
 
               $.ajax({
                   url: '{{ route("otp.request") }}',
@@ -337,10 +338,16 @@
                   },
                   success: function (response) {
                       alert(response.message);
+
+                      $('#enquiry_email').closest('.form-group').hide();
+                      $('#enaquiry_phone').closest('.form-group').hide();
+                      $('#enquiryForm button[type="submit"]').remove();
+                      
                       form.after(`
                           <div class="form-group mt-3" id="otp-section" data-document="${documentName}">
-                              <input type="text" class="form-control" id="otp" placeholder="Enter OTP">
-                              <button type="button" id="verifyOtpBtn" class="gt-btn style1 mt-2">Verify OTP</button>
+                              <input type="text" class="form-control" id="otp" placeholder="Enter OTP" style="width: 50% !important; margin: 0 auto; !important">
+                                 <!-- Center the button using inline styles -->
+                              <button type="button" id="verifyOtpBtn" class="gt-btn style1 mt-2" style="display: block; margin: 15px auto;">Verify OTP</button>
                           </div>
                       `);
                   },
