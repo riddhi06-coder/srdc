@@ -250,7 +250,7 @@
                     <!-- First Name -->
                     <div class="col-xl-6 col-md-6 col-sm-6">
                       <div class="form-group">
-                        <input type="text" id="first_name" class="form-control" name="first_name" placeholder="First Name">
+                        <input type="text" id="first_name" class="form-control" name="first_name" placeholder="First Name*">
                         @error('first_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -261,7 +261,7 @@
                     <!-- Last Name -->
                     <div class="col-xl-6 col-md-6 col-sm-6">
                       <div class="form-group">
-                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last Name">
+                        <input type="text" id="last_name" class="form-control" name="last_name" placeholder="Last Name*">
                         @error('last_name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -272,7 +272,7 @@
                     <!-- Email -->
                     <div class="col-xl-6 col-md-6 col-sm-6">
                       <div class="form-group">
-                        <input type="email" id="email" class="form-control" name="email" placeholder="Email">
+                        <input type="email" id="email" class="form-control" name="email" placeholder="Email*">
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
