@@ -21,7 +21,7 @@
                         <ul class="menu-main">
                             <li><a href="{{ route('home.page') }}">Home</a></li>
                             <li class="menu-item-has-children">
-                                <a href="{{ route('home.page') }}">About Us <i class="fa fa-angle-down"></i></a>
+                                <a href="#">About Us <i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu single-column-menu">
                                     <ul>
                                         <li><a href="{{ route('about.srdc') }}">About SRDC</a></li>
@@ -36,7 +36,7 @@
 
 
                             <li class="menu-item-has-children">
-                                <a href="{{ route('home.page') }}">Specialty Chemicals <i class="fa fa-angle-down"></i></a>
+                                <a href="#">Specialty Chemicals <i class="fa fa-angle-down"></i></a>
                                 <div class="sub-menu mega-menu row mega-menu-column-4 scrollbar" id="style-3">
                                     <div class="row">
 
